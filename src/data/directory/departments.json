@@ -1,0 +1,473 @@
+[
+  {
+    "slug": "operation-center",
+    "office_name": "OPERATION CENTER",
+    "address": null,
+    "trunkline": [
+      "8808-2020"
+    ],
+    "website": null,
+    "email": "opcen@losbanos.gov.ph",
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "gender-and-development-office",
+    "office_name": "GENDER AND DEVELOPMENT OFFICE",
+    "address": "2F City Hall",
+    "trunkline": [
+      "8808-2020 local 119"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "local-civil-registry-office",
+    "office_name": "CITY CIVIL REGISTAR'S OFFICE",
+    "address": "GF City Hall",
+    "trunkline": [
+      "8808-2020 local 108"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-planning-and-development-office",
+    "office_name": "CITY PLANNING AND DEVELOPMENT COORDINATOR'S OFFICE",
+    "address": "4F City Hall",
+    "trunkline": [
+      "8808-2020 local 406/407"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-engineering-office",
+    "office_name": "CITY ENGINEERING OFFICE",
+    "address": "2F City Hall",
+    "trunkline": [
+      "8808-2020 local 201/202"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-assessors-office",
+    "office_name": "CITY ASSESSOR'S OFFICE",
+    "address": "GF City Hall",
+    "trunkline": [
+      "8808-2020 local 112/113/114"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-social-welfare-development-office",
+    "office_name": "CITY SOCIAL WELFARE DEVELOPMENT OFFICE",
+    "address": "Basement City Hall",
+    "trunkline": [
+      "8808-2020 local 212/121"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-environment-and-natural-resources-office",
+    "office_name": "CITY ENVIRONMENT AND NATURAL RESOURCES OFFICE",
+    "address": "2F City Hall",
+    "trunkline": [
+      "8808-2020 local 208"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-treasurers-office",
+    "office_name": "CITY TREASURER'S OFFICE",
+    "address": "GF City Hall",
+    "trunkline": [
+      "8808-2020 local 110/111"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "public-information-office",
+    "office_name": "PUBLIC AFFAIRS AND INFORMATION OFFICE",
+    "address": "2F City Hall",
+    "trunkline": [
+      "8808-2020 local 217",
+      "8847-6417"
+    ],
+    "website": null,
+    "email": "paio.cityofsanpedro@gmail.com",
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-budget-office",
+    "office_name": "CITY BUDGET OFFICE",
+    "address": "4F City Hall",
+    "trunkline": [
+      "8808-2020 local 408"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-accounting-office",
+    "office_name": "CITY ACCOUNTING OFFICE",
+    "address": "GF City Hall",
+    "trunkline": [
+      "8808-2020 local 104/105"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-human-resource-management-office",
+    "office_name": "CITY HUMAN RESOURCE MANAGEMENT OFFICE",
+    "address": "GF City Hall",
+    "trunkline": [
+      "8808-2020 local 102/103"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-tourism-office",
+    "office_name": "CITY TOURISM OFFICE",
+    "address": "2F City Hall",
+    "trunkline": [
+      "8808-2020 local 216"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "information-and-communication-systems-office",
+    "office_name": "CITY INFORMATION AND COMMUNICATION TECHNOLOGY OFFICE",
+    "address": "4F City Hall",
+    "trunkline": [
+      "8808-2020 local 403"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "local-youth-and-development-office",
+    "office_name": "CITY YOUTH AND DEVELOPMENT OFFICE",
+    "address": null,
+    "trunkline": [
+      null
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-agriculture-office",
+    "office_name": "CITY AGRICULTURE OFFICE",
+    "address": "Basement City Hall",
+    "trunkline": [
+      "8808-2020 local 109"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-mdrrmo-office",
+    "office_name": "CITY DISASTER RISK REDUCTION AND MANAGEMENT OFFICE",
+    "address": null,
+    "trunkline": [
+      "8403-2648",
+      "0998 594 1743"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-police-station",
+    "office_name": "San Pedro City Police Station",
+    "address": null,
+    "trunkline": [
+      "8567-3381",
+      "8641-1548",
+      "0998 598 5639",
+      "0998 953 0352"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-health-office",
+    "office_name": "City Health Office",
+    "address": "3F City Hall",
+    "trunkline": [
+      "8808-2020 local 302 "
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "bureau-fire-protection",
+    "office_name": "Bureau of Fire Protection",
+    "address": null,
+    "trunkline": [
+      "8808-0617",
+      "0936 470 2158"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "business-permit-and-licensing-office",
+    "office_name": "Business Permit and Licensing Office",
+    "address": "GF City Hall",
+    "trunkline": [
+      "8808-2020 local 117/118"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-general-services-office",
+    "office_name": "CITY GENERAL SERVICES OFFICE",
+    "address": "4F City Hall",
+    "trunkline": [
+      "8808-2020 local 405"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "persons-with-disability-affairs-office",
+    "office_name": "PERSONS WITH DISABILITY AFFAIRS OFFICE (PWDAO)",
+    "address": "Basement City Hall",
+    "trunkline": [
+      "8808-2020 local 106"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-urban-development-and-housing-office",
+    "office_name": "CITY URBAN DEVELOPMENT AND HOUSING OFFICE",
+    "address": "3F City Hall",
+    "trunkline": [
+      "8808-2020 local 301/309"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "office-senior-citizens-affairs",
+    "office_name": "OFFICE FOR THE SENIOR CITIZENS' AFFAIRS",
+    "address": "GF City Hall",
+    "trunkline": [
+      "8808-2020 local 106"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-nutrition-office",
+    "office_name": "CITY NUTRITION OFFICE",
+    "address": "3F City Hall",
+    "trunkline": [
+      "8808-2020 local 302"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "public-employment-service-office",
+    "office_name": "PUBLIC EMPLOYMENT SERVICE OFFICE",
+    "address": "GF City Hall",
+    "trunkline": [
+      "8808-2020 local 107"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "municipal-local-government-operations-office",
+    "office_name": "CITY LOCAL GOVERNMENT OPERATIONS OFFICE (DILG)",
+    "address": "3F City Hall",
+    "trunkline": [
+      "8808-2020 local 318"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "bids-and-awards-committee",
+    "office_name": "BIDS AND AWARDS COMMITTEE",
+    "address": null,
+    "trunkline": [
+      null
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  },
+  {
+    "slug": "public-order-and-safety-office",
+    "office_name": "PUBLIC ORDER AND SAFETY OFFICE",
+    "address": "Basement City Hall",
+    "trunkline": [
+      "8808-2020 local 126/127/211"
+    ],
+    "website": null,
+    "email": null,
+    "department_head": {
+      "name": null,
+      "contact": null,
+      "email": null
+    }
+  }
+]

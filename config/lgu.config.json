@@ -1,0 +1,59 @@
+{
+  "lgu": {
+    "name": "San Pedro",
+    "fullName": "City of San Pedro",
+    "province": "Laguna",
+    "districtEngineeringOffice": "Laguna 1st DEO",
+    "region": "Region IV-A",
+    "regionCode": "CALABARZON",
+    "type": "city",
+    "logoPath": "/logos/png/bettersp-blue.png",
+    "officialWebsite": "https://cityofsanpedrolaguna.gov.ph",
+    "provinceWebsite": "https://laguna.gov.ph"
+  },
+  "portal": {
+    "name": "BetterSanPedro",
+    "domain": "bettersanpedro.org",
+    "baseUrl": "https://bettersanpedro.org",
+    "tagline": "Community Powered San Pedro City Portal",
+    "description": "Community-powered portal of the City of San Pedro, Laguna.",
+    "brandColor": "#0066eb",
+    "navbarTagline": "A Community-run portal for",
+    "footerBrandName": "Better San Pedro",
+    "footerTagline": "Community Civic Portal",
+    "logoWhitePath": "/logos/webp/bettersp-white-outline.webp"
+  },
+  "location": {
+    "coordinates": {
+      "lat": 14.36343,
+      "lon": 121.06011
+    },
+    "weather": {
+      "defaultCity": "San Pedro, PH"
+    }
+  },
+  "transparency": {
+    "procurement": {
+      "organizationName": "CITY OF SAN PEDRO, LAGUNA",
+      "externalDashboard": "https://transparency.bettergov.ph/organizations/"
+    },
+    "infrastructure": {
+      "searchString": "San Pedro",
+      "exactMatchTargets": [
+        "san pedro",
+        "san pedro city"
+      ]
+    }
+  },
+  "dataPaths": {
+    "departments": "src/data/directory/departments.json",
+    "barangays": "src/data/directory/barangays.json",
+    "services": "src/data/services/categories"
+  },
+  "features": {
+    "openLGU": true,
+    "transparency": true,
+    "tourism": true,
+    "statistics": true
+  }
+}
