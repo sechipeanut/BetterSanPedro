@@ -7,10 +7,10 @@ This project is a fork of [BetterGov.ph](https://bettergov.ph) and [BetterLB](ht
 ---
 ### Inspirations
 
-BetterGov.PH https://github.com/bettergovph/bettergov
-BetterSolano.org https://github.com/BetterSolano/bettersolano
-Betterlocalgov https://github.com/iyanski/betterlocalgov
-BetterLB https://github.com/BetterLosBanos/betterlb
+- BetterGov.PH https://github.com/bettergovph/bettergov
+- BetterSolano.org https://github.com/BetterSolano/bettersolano
+- Betterlocalgov https://github.com/iyanski/betterlocalgov
+- BetterLB https://github.com/BetterLosBanos/betterlb
 
 # NOTICE
 
