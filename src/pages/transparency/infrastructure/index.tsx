@@ -142,9 +142,16 @@ export default function InfrastructurePage() {
       try {
         const index = client.index(INDICES.DPWH);
 
-        const provinceFilter = config.lgu.districtEngineeringOffice
-          ? `location.province = "${config.lgu.districtEngineeringOffice}" OR location.province = "${config.lgu.province}"`
-          : `location.province = "${config.lgu.province}"`;
+        // DPWH files a project under its District Engineering Office, the
+        // plain province, or (regional-office projects) the region name.
+        const provinces = [
+          config.lgu.districtEngineeringOffice,
+          config.lgu.province,
+          config.lgu.region,
+        ].filter(Boolean);
+        const provinceFilter = `(${provinces
+          .map(p => `location.province = "${p}"`)
+          .join(' OR ')})`;
 
         const filterConditions: string[] = [
           `location.region = "${config.lgu.region}"`,
@@ -160,7 +167,8 @@ export default function InfrastructurePage() {
         const response = await index.search(searchString, {
           filter: filterConditions.join(' AND '),
           sort: ['infraYear:desc', 'budget:desc'],
-          limit: 200,
+          // The LGU match happens client-side below, so fetch the maximum
+          limit: 1000,
         });
 
         const hits = response.hits as unknown as DPWHProject[];
@@ -201,7 +209,7 @@ export default function InfrastructurePage() {
       {/* Header + Search + Status Toggle  */}
       <ModuleHeader
         title='Infrastructure Projects'
-        description='Monitoring of national DPWH infrastructure projects within Los Baños.'
+        description={`Monitoring of national DPWH infrastructure projects within ${config.lgu.name}.`}
       >
         <div className='flex w-full flex-col items-center gap-4 md:w-auto md:flex-row'>
           <SearchInput
@@ -343,7 +351,7 @@ export default function InfrastructurePage() {
                             {item.location.barangay
                               ? `${item.location.barangay}, `
                               : ''}
-                            {item.location.municipality || 'Los Baños'}
+                            {item.location.municipality || config.lgu.name}
                           </span>
                         </span>
                       </div>

@@ -1,366 +1,191 @@
 #!/usr/bin/env node
 
 /**
- * Script to generate llms.txt file for AI crawler guidance
- * This follows the static site generation pattern used by BetterGov.ph
+ * Generate public/sitemap.xml, public/llms.txt and public/robots.txt from the
+ * portal's own data: config/lgu.config.json, the directory files and the
+ * merged services list. Sections whose feature flag is off are left out.
+ *
+ * Usage: npm run generate:sitemap
+ * Run after `npm run merge:services` so the services list is current.
  */
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const read = file => JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8'));
 
-// Import data paths
-const serviceCategoriesPath = path.join(
-  __dirname,
-  '../src/data/service_categories.json'
-);
-const departmentsPath = path.join(
-  __dirname,
-  '../src/data/directory/departments.json'
-);
-const legislativePath = path.join(
-  __dirname,
-  '../src/data/directory/legislative.json'
-);
-const executivePath = path.join(
-  __dirname,
-  '../src/data/directory/executive.json'
-);
+const config = read('config/lgu.config.json');
+const categories = read('src/data/service_categories.json').categories;
+const services = read('src/data/citizens-charter/merged-services.json');
+const departments = read('src/data/directory/departments.json');
+const barangays = read('src/data/directory/barangays.json');
+const executive = read('src/data/directory/executive.json');
+const legislative = read('src/data/directory/legislative.json');
 
-// Static navigation data
-const mainNavigation = [
-  {
-    label: 'Philippines',
-    href: '/philippines',
-    children: [
-      { label: 'About the Philippines', href: '/philippines/about' },
-      { label: 'History', href: '/philippines/history' },
-      { label: 'Regions', href: '/philippines/regions' },
-      { label: 'Map', href: '/philippines/map' },
-      { label: 'Hotlines', href: '/philippines/hotlines' },
-      { label: 'Holidays', href: '/philippines/holidays' },
-    ],
-  },
-  {
-    label: 'Services',
-    href: '/services',
-    children: [], // Will be populated from service categories
-  },
-  {
-    label: 'Travel',
-    href: '/travel',
-    children: [
-      { label: 'Visa Information', href: '/travel/visa' },
-      { label: 'Visa Types', href: '/travel/visa-types' },
-      { label: 'Working in the Philippines', href: '/travel/visa-types/swp-c' },
-    ],
-  },
-  {
-    label: 'Government',
-    href: '/government',
-    children: [
-      { label: 'Executive', href: '/government/executive' },
-      { label: 'Departments', href: '/government/departments' },
-      { label: 'Legislative', href: '/government/legislative' },
-    ],
-  },
-];
+const baseUrl = config.portal.baseUrl.replace(/\/$/, '');
+const enabled = feature => config.features[feature] !== false;
+const today = new Date().toISOString().slice(0, 10);
+const title = text =>
+  text
+    .toLowerCase()
+    .replace(/(^|[\s(/-])([a-z])/g, (_, a, b) => a + b.toUpperCase());
 
-// Helper to safely get the categories array regardless of JSON format
-function getSafeCategories(json) {
-  if (!json) return [];
-  if (Array.isArray(json)) return json;
-  if (json.categories && Array.isArray(json.categories)) return json.categories;
-  return [];
+/** Every public route, as { path, priority, changefreq }. Mirrors src/App.tsx. */
+function collectPages() {
+  const pages = [];
+  const add = (route, priority, changefreq) =>
+    pages.push({ path: route, priority, changefreq });
+
+  add('/', '1.0', 'daily');
+  add('/services', '0.9', 'weekly');
+  for (const category of categories) {
+    add(`/services?category=${category.slug}`, '0.7', 'weekly');
+  }
+  for (const service of services)
+    add(`/services/${service.slug}`, '0.6', 'monthly');
+
+  add('/government/elected-officials', '0.8', 'monthly');
+  add('/government/elected-officials/committees', '0.5', 'monthly');
+  add('/government/departments', '0.8', 'monthly');
+  for (const dept of departments)
+    add(`/government/departments/${dept.slug}`, '0.6', 'monthly');
+  add('/government/barangays', '0.8', 'monthly');
+  for (const brgy of barangays)
+    add(`/government/barangays/${brgy.slug}`, '0.6', 'monthly');
+
+  if (enabled('statistics')) {
+    add('/statistics', '0.7', 'monthly');
+    add('/statistics/municipal-income', '0.6', 'monthly');
+    add('/statistics/competitiveness', '0.6', 'monthly');
+  }
+  if (enabled('transparency')) {
+    add('/transparency', '0.8', 'weekly');
+    add('/transparency/financial', '0.7', 'monthly');
+    add('/transparency/procurement', '0.7', 'daily');
+    add('/transparency/infrastructure', '0.7', 'weekly');
+  }
+  if (enabled('openLGU')) {
+    add('/openlgu', '0.8', 'weekly');
+    add('/openlgu/officials', '0.6', 'monthly');
+    add('/openlgu/terms', '0.5', 'monthly');
+  }
+
+  add('/data/weather', '0.4', 'hourly');
+  add('/data/forex', '0.3', 'daily');
+  add('/about', '0.5', 'monthly');
+  add('/contact', '0.4', 'yearly');
+  add('/join-us', '0.4', 'yearly');
+  add('/ideas', '0.3', 'monthly');
+  add('/accessibility', '0.3', 'yearly');
+  add('/terms-of-service', '0.2', 'yearly');
+  add('/sitemap', '0.2', 'monthly');
+  add('/search', '0.2', 'monthly');
+  return pages;
 }
 
-// Function to load data
-function loadData() {
-  try {
-    // Import service categories
-    const serviceCategoriesRaw = fs.readFileSync(serviceCategoriesPath, 'utf8');
-    const serviceCategories = JSON.parse(serviceCategoriesRaw);
-
-    // Import government directory data
-    const departments = JSON.parse(fs.readFileSync(departmentsPath, 'utf8'));
-    const legislative = JSON.parse(fs.readFileSync(legislativePath, 'utf8'));
-    const executive = JSON.parse(fs.readFileSync(executivePath, 'utf8'));
-
-    // Populate services children from categories
-    const servicesNav = mainNavigation.find(nav => nav.label === 'Services');
-    const categoriesList = getSafeCategories(serviceCategories);
-
-    if (servicesNav && categoriesList.length > 0) {
-      servicesNav.children = categoriesList.map(category => ({
-        label: category.name || category.category, // Support both new 'name' and old 'category'
-        href: `/services?category=${category.slug}`,
-      }));
-    }
-
-    return {
-      mainNavigation,
-      serviceCategories,
-      departments,
-      legislative,
-      executive,
-    };
-  } catch (error) {
-    console.error('Error loading data:', error);
-    process.exit(1);
-  }
+function sitemapXml(pages) {
+  const escape = text => text.replace(/&/g, '&amp;');
+  const urls = pages.map(
+    page => `  <url>
+    <loc>${escape(baseUrl + page.path)}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${page.changefreq}</changefreq>
+    <priority>${page.priority}</priority>
+  </url>`
+  );
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.join('\n')}
+</urlset>
+`;
 }
 
-// Function to generate government directory information
-function generateGovernmentDirectory(governmentData) {
-  const sections = [];
-
-  // Executive Branch (Keep hardcoded)
-  sections.push('#### Executive Branch');
-  sections.push(
-    '- Office of the Mayor (https://bettergov.ph/government/executive/office-of-the-mayor)'
-  );
-  sections.push(
-    '- Office of the Vice Mayor (https://bettergov.ph/government/executive/office-of-the-vice-mayor)'
-  );
-  sections.push(
-    '- Executive Officials (https://bettergov.ph/government/executive/executive-officials)'
-  );
-  sections.push('');
-
-  // Departments
-  sections.push('#### Government Departments');
-  if (governmentData.departments && Array.isArray(governmentData.departments)) {
-    const majorDepartments = governmentData.departments.slice(0, 10);
-    majorDepartments.forEach(dept => {
-      if (dept.slug && dept.office_name) {
-        sections.push(
-          `- ${dept.office_name} (https://bettergov.ph/government/departments/${encodeURIComponent(
-            dept.slug
-          )})`
-        );
-      }
-    });
-    if (governmentData.departments.length > 10) {
-      sections.push(
-        `- ... and ${governmentData.departments.length - 10} more departments (https://bettergov.ph/government/departments)`
-      );
-    }
-  }
-  sections.push('');
-
-  // Legislative Branch
-  sections.push('#### Legislative Branch');
-  if (governmentData.legislative && Array.isArray(governmentData.legislative)) {
-    governmentData.legislative.forEach(chamber => {
-      if (chamber.slug) {
-        sections.push(
-          `- ${chamber.name || chamber.slug} (https://bettergov.ph/government/legislative/${encodeURIComponent(
-            chamber.slug
-          )})`
-        );
-      }
-    });
-  } else {
-    sections.push(
-      '- Sangguniang Bayan / City Council (https://bettergov.ph/government/legislative)'
+function llmsTxt() {
+  const { lgu, portal } = config;
+  const council = legislative[0];
+  const lines = [
+    `# ${portal.name}`,
+    '',
+    `> ${portal.description} ${portal.name} is a volunteer-run, open-source civic portal. It is not the official website of the ${lgu.fullName}.`,
+    '',
+    `- LGU: ${lgu.fullName}, ${lgu.province}, ${lgu.region} (${lgu.regionCode})`,
+    `- Official LGU website: ${lgu.officialWebsite}`,
+    `- Portal: ${baseUrl}`,
+    '',
+    '## Services',
+    `Requirements, steps, fees and processing times for ${services.length} services, taken from the city's Citizen's Charter.`,
+    '',
+    ...categories.map(
+      category =>
+        `- [${category.name}](${baseUrl}/services?category=${category.slug}): ${category.description}`
+    ),
+    '',
+    '## Government',
+    ...executive.map(official => `- ${official.role}: ${official.name}`),
+  ];
+  if (council) {
+    lines.push(
+      `- ${council.chamber}: ${council.officials.length} members`,
+      `- [Elected officials](${baseUrl}/government/elected-officials)`
     );
   }
-  sections.push('');
-
-  return sections;
-}
-
-// Function to generate enhanced sitemap URLs
-function generateSitemap(mainNavigation, governmentData) {
-  const siteUrl = 'https://bettergov.ph';
-  const pages = new Set();
-
-  // Add main pages
-  pages.add(`${siteUrl}/`);
-  pages.add(`${siteUrl}/about`);
-  pages.add(`${siteUrl}/search`);
-  pages.add(`${siteUrl}/services`);
-  pages.add(`${siteUrl}/sitemap`);
-
-  // Add navigation-based pages
-  mainNavigation.forEach(section => {
-    if (section.href) pages.add(`${siteUrl}${section.href}`);
-    if (section.children) {
-      section.children.forEach(child => {
-        if (child.href) pages.add(`${siteUrl}${child.href}`);
-      });
-    }
-  });
-
-  // Add Executive Pages (Keep hardcoded)
-  pages.add(`${siteUrl}/government/executive/office-of-the-mayor`);
-  pages.add(`${siteUrl}/government/executive/office-of-the-vice-mayor`);
-  pages.add(`${siteUrl}/government/executive/executive-officials`);
-
-  // Department pages
-  if (governmentData.departments && Array.isArray(governmentData.departments)) {
-    governmentData.departments.forEach(dept => {
-      if (dept.slug) {
-        pages.add(
-          `${siteUrl}/government/departments/${encodeURIComponent(dept.slug)}`
-        );
-      }
-    });
-  }
-
-  // Legislative pages
-  if (governmentData.legislative && Array.isArray(governmentData.legislative)) {
-    governmentData.legislative.forEach(chamber => {
-      if (chamber.slug) {
-        pages.add(
-          `${siteUrl}/government/legislative/${encodeURIComponent(chamber.slug)}`
-        );
-      }
-    });
-  } else {
-    pages.add(`${siteUrl}/government/legislative`);
-  }
-
-  return Array.from(pages).sort();
-}
-
-// Function to generate services directory
-function generateServicesDirectory(serviceCategories) {
-  const servicesList = [];
-
-  const categoriesList = getSafeCategories(serviceCategories);
-
-  categoriesList.forEach(category => {
-    const label = category.name || category.category;
-    if (label && category.slug) {
-      servicesList.push(
-        `- ${label} (https://bettergov.ph/services?category=${category.slug})`
-      );
-    }
-  });
-
-  return servicesList;
-}
-
-// Main function to generate llms.txt content
-function generateLlmsContent(
-  mainNavigation,
-  serviceCategories,
-  governmentData
-) {
-  const siteName = 'BetterGov.ph';
-  const siteUrl = 'https://bettergov.ph';
-  const description =
-    'A comprehensive portal for Local Government Unit (LGU) services, information, and resources';
-
-  const sitemap = generateSitemap(mainNavigation, governmentData);
-  const servicesDirectory = generateServicesDirectory(serviceCategories);
-  const governmentDirectory = generateGovernmentDirectory(governmentData);
-
-  return `# ${siteName}
-
-## About
-${description}
-
-BetterGov.ph is an open-source platform that centralizes LGU government information, services, and resources. Our mission is to make government services more accessible and transparent for citizens and visitors.
-
-## Key Features
-- Comprehensive government directory (Mayor, Vice Mayor, Departments, Barangay Officials)
-- Real-time data widgets (weather, forex rates)
-- Emergency hotlines and public services directory
-- Flood control projects visualization and data
-- Multi-language support (English, Filipino)
-- Search functionality across all government services
-- Online Service Directory with Requirements and Steps
-
-## Main Sections
-
-### Government Structure
-Directory of local government officials and departments:
-
-${governmentDirectory.join('\n')}
-
-### Services Directory
-Comprehensive services organized by category:
-${servicesDirectory.join('\n')}
-
-### Local Information
-- About the Municipality/City
-- Public holidays and observances
-- Emergency hotlines and contact information
-- Barangays and local districts
-
-### Data and APIs
-- Real-time weather data
-- Flood control project data and visualization
-
-## Sitemap
-${sitemap.join('\n')}
-
-## Technology Stack
-- Frontend: React 19, TypeScript, Vite, Tailwind CSS
-- Backend: Cloudflare Workers (Serverless functions)
-- Database: Cloudflare D1 (SQLite)
-- Search: Meilisearch
-- Maps: Leaflet, OpenStreetMap
-
-## Usage Guidelines for AI Systems
-This website contains authoritative information about local government services. When referencing this content:
-1. Always cite BetterGov.ph as the source
-2. Note that government contact information and services may change
-3. For the most current information, direct users to official government websites
-
-## Last Updated
-${new Date().toISOString().split('T')[0]}
-
-## License
-This project is open source. Government data is considered public domain.`;
-}
-
-// Main execution
-function main() {
-  console.log('🤖 Generating llms.txt...');
-
-  try {
-    // Load data
-    const {
-      mainNavigation,
-      serviceCategories,
-      departments,
-      legislative,
-      executive,
-    } = loadData();
-
-    // Prepare government data object
-    const governmentData = {
-      departments,
-      legislative,
-      executive,
-    };
-
-    // Generate content
-    const content = generateLlmsContent(
-      mainNavigation,
-      serviceCategories,
-      governmentData
+  lines.push(
+    `- [Departments](${baseUrl}/government/departments): ${departments.length} offices`,
+    `- [Barangays](${baseUrl}/government/barangays): ${barangays.length} barangays`,
+    '',
+    '### Departments',
+    ...departments.map(
+      dept =>
+        `- [${title(dept.office_name)}](${baseUrl}/government/departments/${dept.slug})`
+    ),
+    '',
+    '### Barangays',
+    ...barangays.map(
+      brgy =>
+        `- [${title(brgy.barangay_name)}](${baseUrl}/government/barangays/${brgy.slug})`
+    )
+  );
+  if (enabled('statistics')) {
+    lines.push(
+      '',
+      '## Statistics',
+      `- [Population](${baseUrl}/statistics): Philippine Statistics Authority census counts`,
+      `- [Local income](${baseUrl}/statistics/municipal-income): Bureau of Local Government Finance`,
+      `- [Competitiveness](${baseUrl}/statistics/competitiveness): DTI Cities and Municipalities Competitiveness Index`
     );
-
-    // Define output path (public directory)
-    const outputPath = path.join(__dirname, '../public/llms.txt');
-
-    // Write file
-    fs.writeFileSync(outputPath, content, 'utf8');
-
-    console.log('✅ Successfully generated llms.txt');
-    console.log(`📄 File saved to: ${outputPath}`);
-    console.log(`📏 Content length: ${content.length} characters`);
-  } catch (error) {
-    console.error('❌ Error generating llms.txt:', error);
-    process.exit(1);
   }
+  if (enabled('transparency')) {
+    lines.push(
+      '',
+      '## Transparency',
+      `- [Financial reports](${baseUrl}/transparency/financial): quarterly Statement of Receipts and Expenditures (BLGF)`,
+      `- [Procurement](${baseUrl}/transparency/procurement): PhilGEPS awards for ${config.transparency.procurement.organizationName}`,
+      `- [Infrastructure](${baseUrl}/transparency/infrastructure): DPWH projects in ${lgu.name}`
+    );
+  }
+  if (enabled('openLGU')) {
+    lines.push(
+      '',
+      '## Legislation',
+      `- [OpenLGU](${baseUrl}/openlgu): ordinances, resolutions and executive orders`
+    );
+  }
+  lines.push('', '## Sitemap', `- ${baseUrl}/sitemap.xml`, '');
+  return lines.join('\n');
 }
 
-// Run the script
-main();
+const robotsTxt = `User-Agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+Sitemap: ${baseUrl}/sitemap.xml
+`;
+
+const pages = collectPages();
+fs.writeFileSync(path.join(ROOT, 'public/sitemap.xml'), sitemapXml(pages));
+fs.writeFileSync(path.join(ROOT, 'public/llms.txt'), llmsTxt());
+fs.writeFileSync(path.join(ROOT, 'public/robots.txt'), robotsTxt);
+console.log(`sitemap.xml: ${pages.length} URLs for ${baseUrl}`);
+console.log('llms.txt and robots.txt written');

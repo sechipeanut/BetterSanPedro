@@ -3,7 +3,7 @@ name: Validate JSON Schema
 on:
   push:
     branches:
-      - main
+      - master
     paths:
       - 'src/data/**/*.json'
       - 'src/data/**/schema/*.json'
@@ -11,7 +11,7 @@ on:
       - '.github/workflows/validate-json-schema.yml'
   pull_request:
     branches:
-      - main
+      - master
     types: [opened, synchronize]
     paths:
       - 'src/data/**/*.json'

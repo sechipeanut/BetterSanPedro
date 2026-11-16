@@ -1,9 +1,9 @@
 name: Build and Deploy
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
 
 permissions: {}
 
@@ -70,8 +70,14 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Run Database Migrations (Production only)
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      # The D1 database only backs the OpenLGU (legislative) module. While that
+      # feature is off in config/lgu.config.json there is no database to migrate.
+      - name: Read OpenLGU feature flag
+        id: features
+        run: echo "openlgu=$(node -p "require('./config/lgu.config.json').features.openLGU")" >> "$GITHUB_OUTPUT"
+
+      - name: Run Database Migrations (Production only, OpenLGU enabled)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master' && steps.features.outputs.openlgu == 'true'
         run: ./scripts/migrate.sh remote --yes
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -83,6 +89,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=betterlb
+          command: pages deploy dist --project-name=bettersanpedro
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           wranglerVersion: '4.70.0'

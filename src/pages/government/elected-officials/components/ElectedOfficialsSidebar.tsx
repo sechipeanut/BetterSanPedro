@@ -5,6 +5,7 @@ import {
   SidebarGroup,
   SidebarItem,
 } from '@/components/navigation/SidebarNavigation';
+import { config } from '@/lib/lguConfig';
 
 export default function ElectedOfficialsSidebar() {
   const groups = [
@@ -31,7 +32,9 @@ export default function ElectedOfficialsSidebar() {
   ];
 
   return (
-    <SidebarContainer title='Municipal Government'>
+    <SidebarContainer
+      title={`${config.lgu.type === 'city' ? 'City' : 'Municipal'} Government`}
+    >
       {groups.map(group => (
         <SidebarGroup key={group.title} title={group.title}>
           {group.items.map(item => (

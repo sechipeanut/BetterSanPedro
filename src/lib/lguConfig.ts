@@ -32,6 +32,8 @@ export interface LGUConfig {
   transparency: {
     procurement: {
       organizationName: string;
+      /** Earlier PhilGEPS names of the same LGU, e.g. before cityhood. */
+      previousOrganizationNames?: string[];
       externalDashboard: string;
     };
     infrastructure: {

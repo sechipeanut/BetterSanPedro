@@ -170,6 +170,24 @@
       "description": "National emergency response hotline"
     },
     {
+      "name": "San Pedro CDRRMO (Rescue)",
+      "category": "Emergency",
+      "numbers": ["(02) 8403-2648", "0998-594-1743"],
+      "description": "City Disaster Risk Reduction and Management Office, City of San Pedro"
+    },
+    {
+      "name": "San Pedro City Police Station",
+      "category": "Security",
+      "numbers": ["(02) 8567-3381", "(02) 8641-1548", "0998-598-5639"],
+      "description": "Philippine National Police, City of San Pedro"
+    },
+    {
+      "name": "Bureau of Fire Protection - San Pedro",
+      "category": "Emergency",
+      "numbers": ["(02) 8808-0617", "0936-470-2158"],
+      "description": "San Pedro City Fire Station"
+    },
+    {
       "name": "PNP Emergency",
       "category": "Security",
       "numbers": ["117"],

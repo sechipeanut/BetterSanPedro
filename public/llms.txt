@@ -1,141 +1,116 @@
-# BetterGov.ph
+# BetterSanPedro
 
-## About
-A comprehensive portal for Local Government Unit (LGU) services, information, and resources
+> Community-powered portal of the City of San Pedro, Laguna. BetterSanPedro is a volunteer-run, open-source civic portal. It is not the official website of the City of San Pedro.
 
-BetterGov.ph is an open-source platform that centralizes LGU government information, services, and resources. Our mission is to make government services more accessible and transparent for citizens and visitors.
+- LGU: City of San Pedro, Laguna, Region IV-A (CALABARZON)
+- Official LGU website: https://cityofsanpedrolaguna.gov.ph
+- Portal: https://bettersanpedro.org
 
-## Key Features
-- Comprehensive government directory (Mayor, Vice Mayor, Departments, Barangay Officials)
-- Real-time data widgets (weather, forex rates)
-- Emergency hotlines and public services directory
-- Flood control projects visualization and data
-- Multi-language support (English, Filipino)
-- Search functionality across all government services
-- Online Service Directory with Requirements and Steps
+## Services
+Requirements, steps, fees and processing times for 297 services, taken from the city's Citizen's Charter.
 
-## Main Sections
+- [Certificates & Vital Records](https://bettersanpedro.org/services?category=certificates-vital-records): Birth, death, marriage certificates, and other vital records.
+- [Business, Trade & Investment](https://bettersanpedro.org/services?category=business-trade-investment): Business permits, licenses, and trade registration services.
+- [Social Services & Assistance](https://bettersanpedro.org/services?category=social-services-assistance): Welfare programs, senior citizen services, PWD benefits, and financial aid.
+- [Health & Wellness](https://bettersanpedro.org/services?category=health-wellness): Vaccination programs, health certificates, and medical assistance.
+- [Taxation & Payments](https://bettersanpedro.org/services?category=taxation-payments): Property tax, business tax, payments, and tax clearance.
+- [Agriculture & Economic Development](https://bettersanpedro.org/services?category=agriculture-economic-development): Agricultural loans, crop insurance, fertilizer assistance, and training.
+- [Infrastructure & Public Works](https://bettersanpedro.org/services?category=infrastructure-public-works): Construction permits, road maintenance requests, and public facilities.
+- [Education & Scholarship](https://bettersanpedro.org/services?category=education-scholarship): Scholarship programs, student assistance, and educational grants.
+- [Public Safety & Security](https://bettersanpedro.org/services?category=public-safety-security): Emergency services, disaster preparedness, and community safety programs.
+- [Environment & Natural Resources](https://bettersanpedro.org/services?category=environment-natural-resources): Environmental permits, waste management, and conservation programs.
+- [Executive & Legislative Services](https://bettersanpedro.org/services?category=executive-legislative-services): Requests, endorsements, clearances, and assistance from the Mayor, Vice Mayor, City Council, and other City Hall offices.
 
-### Government Structure
-Directory of local government officials and departments:
+## Government
+- City Mayor: Art Joseph Francis Mercado
+- City Vice Mayor: Sheriliz B. Almoro
+- 20th Sangguniang Panlungsod: 14 members
+- [Elected officials](https://bettersanpedro.org/government/elected-officials)
+- [Departments](https://bettersanpedro.org/government/departments): 42 offices
+- [Barangays](https://bettersanpedro.org/government/barangays): 27 barangays
 
-#### Executive Branch
-- Office of the Mayor (https://bettergov.ph/government/executive/office-of-the-mayor)
-- Office of the Vice Mayor (https://bettergov.ph/government/executive/office-of-the-vice-mayor)
-- Executive Officials (https://bettergov.ph/government/executive/executive-officials)
+### Departments
+- [Operation Center](https://bettersanpedro.org/government/departments/operation-center)
+- [Gender And Development Office](https://bettersanpedro.org/government/departments/gender-and-development-office)
+- [City Civil Registar's Office](https://bettersanpedro.org/government/departments/local-civil-registry-office)
+- [City Planning And Development Coordinator's Office](https://bettersanpedro.org/government/departments/municipal-planning-and-development-office)
+- [City Engineering Office](https://bettersanpedro.org/government/departments/municipal-engineering-office)
+- [City Assessor's Office](https://bettersanpedro.org/government/departments/municipal-assessors-office)
+- [City Social Welfare Development Office](https://bettersanpedro.org/government/departments/municipal-social-welfare-development-office)
+- [City Environment And Natural Resources Office](https://bettersanpedro.org/government/departments/municipal-environment-and-natural-resources-office)
+- [City Treasurer's Office](https://bettersanpedro.org/government/departments/municipal-treasurers-office)
+- [Public Affairs And Information Office](https://bettersanpedro.org/government/departments/public-information-office)
+- [City Budget Office](https://bettersanpedro.org/government/departments/municipal-budget-office)
+- [City Accounting Office](https://bettersanpedro.org/government/departments/municipal-accounting-office)
+- [City Human Resource Management Office](https://bettersanpedro.org/government/departments/municipal-human-resource-management-office)
+- [City Tourism Office](https://bettersanpedro.org/government/departments/municipal-tourism-office)
+- [City Information And Communication Technology Office](https://bettersanpedro.org/government/departments/information-and-communication-systems-office)
+- [City Youth And Development Office](https://bettersanpedro.org/government/departments/local-youth-and-development-office)
+- [City Agriculture Office](https://bettersanpedro.org/government/departments/municipal-agriculture-office)
+- [City Disaster Risk Reduction And Management Office](https://bettersanpedro.org/government/departments/municipal-mdrrmo-office)
+- [San Pedro City Police Station](https://bettersanpedro.org/government/departments/municipal-police-station)
+- [City Health Office](https://bettersanpedro.org/government/departments/municipal-health-office)
+- [Bureau Of Fire Protection](https://bettersanpedro.org/government/departments/bureau-fire-protection)
+- [Business Permit And Licensing Office](https://bettersanpedro.org/government/departments/business-permit-and-licensing-office)
+- [City General Services Office](https://bettersanpedro.org/government/departments/municipal-general-services-office)
+- [Persons With Disability Affairs Office (Pwdao)](https://bettersanpedro.org/government/departments/persons-with-disability-affairs-office)
+- [City Urban Development And Housing Office](https://bettersanpedro.org/government/departments/municipal-urban-development-and-housing-office)
+- [Office For The Senior Citizens' Affairs](https://bettersanpedro.org/government/departments/office-senior-citizens-affairs)
+- [City Nutrition Office](https://bettersanpedro.org/government/departments/municipal-nutrition-office)
+- [Public Employment Service Office](https://bettersanpedro.org/government/departments/public-employment-service-office)
+- [City Local Government Operations Office (Dilg)](https://bettersanpedro.org/government/departments/municipal-local-government-operations-office)
+- [Bids And Awards Committee](https://bettersanpedro.org/government/departments/bids-and-awards-committee)
+- [Public Order And Safety Office](https://bettersanpedro.org/government/departments/public-order-and-safety-office)
+- [City Administrator's Office](https://bettersanpedro.org/government/departments/city-administrators-office)
+- [City Legal Office](https://bettersanpedro.org/government/departments/city-legal-office)
+- [Sangguniang Panlungsod Secretariat](https://bettersanpedro.org/government/departments/sangguniang-panlungsod-secretariat)
+- [Office Of The Building Official](https://bettersanpedro.org/government/departments/office-of-the-building-official)
+- [City Cooperative And Livelihood Development Office](https://bettersanpedro.org/government/departments/city-cooperative-and-livelihood-development-office)
+- [City Veterinary Office](https://bettersanpedro.org/government/departments/city-veterinary-office)
+- [City Education And Development Office](https://bettersanpedro.org/government/departments/city-education-and-development-office)
+- [San Pedro City Polytechnic College (Spcpc)](https://bettersanpedro.org/government/departments/san-pedro-city-polytechnic-college)
+- [San Pedro Jose L. Amante Emergency Hospital (Spjlaeh)](https://bettersanpedro.org/government/departments/san-pedro-jose-l-amante-emergency-hospital)
+- [San Pedro Town Center](https://bettersanpedro.org/government/departments/san-pedro-town-center)
+- [Office Of The Economic Enterprise - Cemetery Division](https://bettersanpedro.org/government/departments/economic-enterprise-cemetery-division)
 
-#### Government Departments
-- GENDER AND DEVELOPMENT OFFICE (https://bettergov.ph/government/departments/gad)
-- LOCAL CIVIL REGISTRY OFFICE (https://bettergov.ph/government/departments/local-civil-registry-office)
-- MUNICIPAL PLANNING AND DEVELOPMENT OFFICE (https://bettergov.ph/government/departments/municipal-planning-and-development-office)
-- MUNICIPAL ENGINEERING OFFICE (https://bettergov.ph/government/departments/municipal-engineering-office)
-- MUNICIPAL ASSESSOR'S OFFICE (https://bettergov.ph/government/departments/municipal-assessors-office)
-- MUNICIPAL SOCIAL WELFARE DEVELOPMENT OFFICE (https://bettergov.ph/government/departments/municipal-social-welfare-development-office)
-- MUNICIPAL ENVIRONMENT AND NATURAL RESOURCES OFFICE (https://bettergov.ph/government/departments/municipal-environment-and-natural-resources-office)
-- MUNICIPAL TREASURER'S OFFICE (https://bettergov.ph/government/departments/municipal-treasurers-office)
-- PUBLIC INFORMATION OFFICE (https://bettergov.ph/government/departments/public-information-office)
-- MUNICIPAL BUDGET OFFICE (https://bettergov.ph/government/departments/municipal-budget-office)
-- ... and 11 more departments (https://bettergov.ph/government/departments)
+### Barangays
+- [Bagong Silang](https://bettersanpedro.org/government/barangays/barangay-bagong-silang)
+- [Calendola](https://bettersanpedro.org/government/barangays/barangay-calendola)
+- [Chrysanthemum](https://bettersanpedro.org/government/barangays/barangay-chrysanthemum)
+- [Cuyab](https://bettersanpedro.org/government/barangays/barangay-cuyab)
+- [Estrella](https://bettersanpedro.org/government/barangays/barangay-estrella)
+- [Fatima](https://bettersanpedro.org/government/barangays/barangay-fatima)
+- [G.s.i.s.](https://bettersanpedro.org/government/barangays/barangay-g-s-i-s)
+- [Landayan](https://bettersanpedro.org/government/barangays/barangay-landayan)
+- [Langgam](https://bettersanpedro.org/government/barangays/barangay-langgam)
+- [Laram](https://bettersanpedro.org/government/barangays/barangay-laram)
+- [Magsaysay](https://bettersanpedro.org/government/barangays/barangay-magsaysay)
+- [Maharlika](https://bettersanpedro.org/government/barangays/barangay-maharlika)
+- [Narra](https://bettersanpedro.org/government/barangays/barangay-narra)
+- [Nueva](https://bettersanpedro.org/government/barangays/barangay-nueva)
+- [Pacita 1](https://bettersanpedro.org/government/barangays/barangay-pacita-1)
+- [Pacita 2](https://bettersanpedro.org/government/barangays/barangay-pacita-2)
+- [Poblacion](https://bettersanpedro.org/government/barangays/barangay-poblacion)
+- [Riverside](https://bettersanpedro.org/government/barangays/barangay-riverside)
+- [Rosario](https://bettersanpedro.org/government/barangays/barangay-rosario)
+- [Sampaguita Village](https://bettersanpedro.org/government/barangays/barangay-sampaguita-village)
+- [San Antonio](https://bettersanpedro.org/government/barangays/barangay-san-antonio)
+- [San Lorenzo Ruiz](https://bettersanpedro.org/government/barangays/barangay-san-lorenzo-ruiz)
+- [San Roque](https://bettersanpedro.org/government/barangays/barangay-san-roque)
+- [San Vicente](https://bettersanpedro.org/government/barangays/barangay-san-vicente)
+- [Santo Niño](https://bettersanpedro.org/government/barangays/barangay-santo-nino)
+- [United Bayanihan](https://bettersanpedro.org/government/barangays/barangay-united-bayanihan)
+- [United Better Living](https://bettersanpedro.org/government/barangays/barangay-united-better-living)
 
-#### Legislative Branch
-- 12th-sangguniang-bayan (https://bettergov.ph/government/legislative/12th-sangguniang-bayan)
+## Statistics
+- [Population](https://bettersanpedro.org/statistics): Philippine Statistics Authority census counts
+- [Local income](https://bettersanpedro.org/statistics/municipal-income): Bureau of Local Government Finance
+- [Competitiveness](https://bettersanpedro.org/statistics/competitiveness): DTI Cities and Municipalities Competitiveness Index
 
-
-### Services Directory
-Comprehensive services organized by category:
-- Certificates & Vital Records (https://bettergov.ph/services?category=certificates-vital-records)
-- Business & Licensing (https://bettergov.ph/services?category=business-licensing)
-- Taxation & Assessment (https://bettergov.ph/services?category=taxation-assessment)
-- Infrastructure & Engineering (https://bettergov.ph/services?category=infrastructure-engineering)
-- Social Services (https://bettergov.ph/services?category=social-services)
-- Health & Wellness (https://bettergov.ph/services?category=health-wellness)
-- Agriculture & Livelihood (https://bettergov.ph/services?category=agriculture-livelihood)
-- Environment & Waste (https://bettergov.ph/services?category=environment-waste)
-- Education & Scholarship (https://bettergov.ph/services?category=education-scholarship)
-- Public Safety (https://bettergov.ph/services?category=public-safety)
-
-### Local Information
-- About the Municipality/City
-- Public holidays and observances
-- Emergency hotlines and contact information
-- Barangays and local districts
-
-### Data and APIs
-- Real-time weather data
-- Flood control project data and visualization
+## Transparency
+- [Financial reports](https://bettersanpedro.org/transparency/financial): quarterly Statement of Receipts and Expenditures (BLGF)
+- [Procurement](https://bettersanpedro.org/transparency/procurement): PhilGEPS awards for CITY OF SAN PEDRO, LAGUNA
+- [Infrastructure](https://bettersanpedro.org/transparency/infrastructure): DPWH projects in San Pedro
 
 ## Sitemap
-https://bettergov.ph/
-https://bettergov.ph/about
-https://bettergov.ph/government
-https://bettergov.ph/government/departments
-https://bettergov.ph/government/departments/bureau-fire-protection
-https://bettergov.ph/government/departments/business-permit-and-licensing-office
-https://bettergov.ph/government/departments/gad
-https://bettergov.ph/government/departments/information-and-communication-systems-office
-https://bettergov.ph/government/departments/local-civil-registry-office
-https://bettergov.ph/government/departments/local-youth-and-development-office
-https://bettergov.ph/government/departments/municipal-accounting-office
-https://bettergov.ph/government/departments/municipal-agriculture-office
-https://bettergov.ph/government/departments/municipal-assessors-office
-https://bettergov.ph/government/departments/municipal-budget-office
-https://bettergov.ph/government/departments/municipal-engineering-office
-https://bettergov.ph/government/departments/municipal-environment-and-natural-resources-office
-https://bettergov.ph/government/departments/municipal-health-office
-https://bettergov.ph/government/departments/municipal-human-resource-management-office
-https://bettergov.ph/government/departments/municipal-mdrrmo-office
-https://bettergov.ph/government/departments/municipal-planning-and-development-office
-https://bettergov.ph/government/departments/municipal-police-station
-https://bettergov.ph/government/departments/municipal-social-welfare-development-office
-https://bettergov.ph/government/departments/municipal-tourism-office
-https://bettergov.ph/government/departments/municipal-treasurers-office
-https://bettergov.ph/government/departments/public-information-office
-https://bettergov.ph/government/executive
-https://bettergov.ph/government/executive/executive-officials
-https://bettergov.ph/government/executive/office-of-the-mayor
-https://bettergov.ph/government/executive/office-of-the-vice-mayor
-https://bettergov.ph/government/legislative
-https://bettergov.ph/government/legislative/12th-sangguniang-bayan
-https://bettergov.ph/philippines
-https://bettergov.ph/philippines/about
-https://bettergov.ph/philippines/history
-https://bettergov.ph/philippines/holidays
-https://bettergov.ph/philippines/hotlines
-https://bettergov.ph/philippines/map
-https://bettergov.ph/philippines/regions
-https://bettergov.ph/search
-https://bettergov.ph/services
-https://bettergov.ph/services?category=agriculture-livelihood
-https://bettergov.ph/services?category=business-licensing
-https://bettergov.ph/services?category=certificates-vital-records
-https://bettergov.ph/services?category=education-scholarship
-https://bettergov.ph/services?category=environment-waste
-https://bettergov.ph/services?category=health-wellness
-https://bettergov.ph/services?category=infrastructure-engineering
-https://bettergov.ph/services?category=public-safety
-https://bettergov.ph/services?category=social-services
-https://bettergov.ph/services?category=taxation-assessment
-https://bettergov.ph/sitemap
-https://bettergov.ph/travel
-https://bettergov.ph/travel/visa
-https://bettergov.ph/travel/visa-types
-https://bettergov.ph/travel/visa-types/swp-c
-
-## Technology Stack
-- Frontend: React 19, TypeScript, Vite, Tailwind CSS
-- Backend: Cloudflare Workers (Serverless functions)
-- Database: Cloudflare D1 (SQLite)
-- Search: Meilisearch
-- Maps: Leaflet, OpenStreetMap
-
-## Usage Guidelines for AI Systems
-This website contains authoritative information about local government services. When referencing this content:
-1. Always cite BetterGov.ph as the source
-2. Note that government contact information and services may change
-3. For the most current information, direct users to official government websites
-
-## Last Updated
-2026-01-13
-
-## License
-This project is open source. Government data is considered public domain.
+- https://bettersanpedro.org/sitemap.xml

@@ -3,11 +3,15 @@
     "location": {
       "region": "Region IV-A",
       "province": "Laguna",
-      "municipality": "Los Baños"
+      "municipality": "San Pedro"
     },
-    "source": "PSA Census",
-    "notes": "2024 data is projected/latest census.",
+    "source": "Philippine Statistics Authority, Census of Population (1903-2024)",
+    "notes": "City totals are census counts. Barangay figures are from the 2020 Census; barangay-level results for other census years are not yet included.",
     "censusDates": {
+      "1903": "1903-03-02",
+      "1918": "1918-12-31",
+      "1939": "1939-01-01",
+      "1948": "1948-10-01",
       "1960": "1960-02-15",
       "1970": "1970-05-06",
       "1975": "1975-05-01",
@@ -23,167 +27,361 @@
     }
   },
   "municipality": {
-    "name": "Los Baños",
+    "name": "San Pedro",
     "history": [
-      { "year": 1960, "population": 21519 },
-      { "year": 1970, "population": 32167 },
-      { "year": 1975, "population": 38351 },
-      { "year": 1980, "population": 49555 },
-      { "year": 1990, "population": 66211 },
-      { "year": 1995, "population": 71683 },
-      { "year": 2000, "population": 82027 },
-      { "year": 2007, "population": 98631 },
-      { "year": 2010, "population": 101884 },
-      { "year": 2015, "population": 112008 },
-      { "year": 2020, "population": 115353 },
-      { "year": 2024, "population": 117030 }
+      {
+        "year": 1903,
+        "population": 3678
+      },
+      {
+        "year": 1918,
+        "population": 4184
+      },
+      {
+        "year": 1939,
+        "population": 6300
+      },
+      {
+        "year": 1948,
+        "population": 9063
+      },
+      {
+        "year": 1960,
+        "population": 14082
+      },
+      {
+        "year": 1970,
+        "population": 32991
+      },
+      {
+        "year": 1975,
+        "population": 43439
+      },
+      {
+        "year": 1980,
+        "population": 74556
+      },
+      {
+        "year": 1990,
+        "population": 156486
+      },
+      {
+        "year": 1995,
+        "population": 189333
+      },
+      {
+        "year": 2000,
+        "population": 231403
+      },
+      {
+        "year": 2007,
+        "population": 281808
+      },
+      {
+        "year": 2010,
+        "population": 294310
+      },
+      {
+        "year": 2015,
+        "population": 325809
+      },
+      {
+        "year": 2020,
+        "population": 326001
+      },
+      {
+        "year": 2024,
+        "population": 348968
+      }
     ],
     "growthRates": [
-      { "period": "2010-2015", "rate": 1.82 },
-      { "period": "2015-2020", "rate": 0.62 },
-      { "period": "2015-2024", "rate": 0.49 },
-      { "period": "2020-2024", "rate": 0.35 }
+      {
+        "period": "2010-2015",
+        "rate": 1.96
+      },
+      {
+        "period": "2015-2020",
+        "rate": 0.01
+      },
+      {
+        "period": "2015-2024",
+        "rate": 0.77
+      },
+      {
+        "period": "2020-2024",
+        "rate": 1.65
+      }
     ]
   },
   "barangays": [
     {
-      "id": "anos",
-      "name": "Anos",
-      "history": [
-        { "year": 2010, "population": 7446 },
-        { "year": 2015, "population": 8039 },
-        { "year": 2020, "population": 8815 },
-        { "year": 2024, "population": 9368 }
-      ]
-    },
-    {
       "id": "bagong-silang",
       "name": "Bagong Silang",
       "history": [
-        { "year": 2010, "population": 577 },
-        { "year": 2015, "population": 629 },
-        { "year": 2020, "population": 707 },
-        { "year": 2024, "population": 727 }
+        {
+          "year": 2020,
+          "population": 5736
+        }
       ]
     },
     {
-      "id": "bambang",
-      "name": "Bambang",
+      "id": "calendola",
+      "name": "Calendola",
       "history": [
-        { "year": 2010, "population": 7021 },
-        { "year": 2015, "population": 7228 },
-        { "year": 2020, "population": 7638 },
-        { "year": 2024, "population": 7816 }
+        {
+          "year": 2020,
+          "population": 3797
+        }
       ]
     },
     {
-      "id": "batong-malake",
-      "name": "Batong Malake",
+      "id": "chrysanthemum",
+      "name": "Chrysanthemum",
       "history": [
-        { "year": 2010, "population": 11884 },
-        { "year": 2015, "population": 15314 },
-        { "year": 2020, "population": 12578 },
-        { "year": 2024, "population": 12879 }
+        {
+          "year": 2020,
+          "population": 12433
+        }
       ]
     },
     {
-      "id": "baybayin",
-      "name": "Baybayin (Pob.)",
+      "id": "cuyab",
+      "name": "Cuyab",
       "history": [
-        { "year": 2010, "population": 1307 },
-        { "year": 2015, "population": 1632 },
-        { "year": 2020, "population": 1466 },
-        { "year": 2024, "population": 1538 }
+        {
+          "year": 2020,
+          "population": 21422
+        }
       ]
     },
     {
-      "id": "bayog",
-      "name": "Bayog",
+      "id": "estrella",
+      "name": "Estrella",
       "history": [
-        { "year": 2010, "population": 9671 },
-        { "year": 2015, "population": 10460 },
-        { "year": 2020, "population": 11613 },
-        { "year": 2024, "population": 11782 }
+        {
+          "year": 2020,
+          "population": 8025
+        }
       ]
     },
     {
-      "id": "lalakay",
-      "name": "Lalakay",
+      "id": "fatima",
+      "name": "Fatima",
       "history": [
-        { "year": 2010, "population": 4253 },
-        { "year": 2015, "population": 5032 },
-        { "year": 2020, "population": 4234 },
-        { "year": 2024, "population": 4350 }
+        {
+          "year": 2020,
+          "population": 6491
+        }
       ]
     },
     {
-      "id": "maahas",
-      "name": "Maahas",
+      "id": "g-s-i-s",
+      "name": "G.S.I.S.",
       "history": [
-        { "year": 2010, "population": 6800 },
-        { "year": 2015, "population": 7536 },
-        { "year": 2020, "population": 8785 },
-        { "year": 2024, "population": 9485 }
+        {
+          "year": 2020,
+          "population": 2828
+        }
       ]
     },
     {
-      "id": "malinta",
-      "name": "Malinta",
+      "id": "landayan",
+      "name": "Landayan",
       "history": [
-        { "year": 2010, "population": 6258 },
-        { "year": 2015, "population": 7368 },
-        { "year": 2020, "population": 6531 },
-        { "year": 2024, "population": 6161 }
+        {
+          "year": 2020,
+          "population": 33235
+        }
       ]
     },
     {
-      "id": "mayondon",
-      "name": "Mayondon",
+      "id": "langgam",
+      "name": "Langgam",
       "history": [
-        { "year": 2010, "population": 16181 },
-        { "year": 2015, "population": 17071 },
-        { "year": 2020, "population": 17817 },
-        { "year": 2024, "population": 16520 }
+        {
+          "year": 2020,
+          "population": 30946
+        }
       ]
     },
     {
-      "id": "putho-tuntungin",
-      "name": "Putho Tuntungin",
+      "id": "laram",
+      "name": "Laram",
       "history": [
-        { "year": 2010, "population": 8692 },
-        { "year": 2015, "population": 9068 },
-        { "year": 2020, "population": 9300 },
-        { "year": 2024, "population": 9602 }
+        {
+          "year": 2020,
+          "population": 6536
+        }
+      ]
+    },
+    {
+      "id": "magsaysay",
+      "name": "Magsaysay",
+      "history": [
+        {
+          "year": 2020,
+          "population": 12793
+        }
+      ]
+    },
+    {
+      "id": "maharlika",
+      "name": "Maharlika",
+      "history": [
+        {
+          "year": 2020,
+          "population": 5580
+        }
+      ]
+    },
+    {
+      "id": "narra",
+      "name": "Narra",
+      "history": [
+        {
+          "year": 2020,
+          "population": 2297
+        }
+      ]
+    },
+    {
+      "id": "nueva",
+      "name": "Nueva",
+      "history": [
+        {
+          "year": 2020,
+          "population": 4286
+        }
+      ]
+    },
+    {
+      "id": "pacita-1",
+      "name": "Pacita 1",
+      "history": [
+        {
+          "year": 2020,
+          "population": 22581
+        }
+      ]
+    },
+    {
+      "id": "pacita-2",
+      "name": "Pacita 2",
+      "history": [
+        {
+          "year": 2020,
+          "population": 11993
+        }
+      ]
+    },
+    {
+      "id": "poblacion",
+      "name": "Poblacion",
+      "history": [
+        {
+          "year": 2020,
+          "population": 5771
+        }
+      ]
+    },
+    {
+      "id": "riverside",
+      "name": "Riverside",
+      "history": [
+        {
+          "year": 2020,
+          "population": 3028
+        }
+      ]
+    },
+    {
+      "id": "rosario",
+      "name": "Rosario",
+      "history": [
+        {
+          "year": 2020,
+          "population": 5911
+        }
+      ]
+    },
+    {
+      "id": "sampaguita-village",
+      "name": "Sampaguita Village",
+      "history": [
+        {
+          "year": 2020,
+          "population": 4941
+        }
       ]
     },
     {
       "id": "san-antonio",
       "name": "San Antonio",
       "history": [
-        { "year": 2010, "population": 13173 },
-        { "year": 2015, "population": 13537 },
-        { "year": 2020, "population": 15978 },
-        { "year": 2024, "population": 16512 }
+        {
+          "year": 2020,
+          "population": 59368
+        }
       ]
     },
     {
-      "id": "tadlak",
-      "name": "Tadlak",
+      "id": "san-lorenzo-ruiz",
+      "name": "San Lorenzo Ruiz",
       "history": [
-        { "year": 2010, "population": 3342 },
-        { "year": 2015, "population": 3319 },
-        { "year": 2020, "population": 4043 },
-        { "year": 2024, "population": 4377 }
+        {
+          "year": 2020,
+          "population": 5800
+        }
       ]
     },
     {
-      "id": "timugan",
-      "name": "Timugan (Pob.)",
+      "id": "san-roque",
+      "name": "San Roque",
       "history": [
-        { "year": 2010, "population": 5279 },
-        { "year": 2015, "population": 5775 },
-        { "year": 2020, "population": 5848 },
-        { "year": 2024, "population": 5913 }
+        {
+          "year": 2020,
+          "population": 7161
+        }
+      ]
+    },
+    {
+      "id": "san-vicente",
+      "name": "San Vicente",
+      "history": [
+        {
+          "year": 2020,
+          "population": 27561
+        }
+      ]
+    },
+    {
+      "id": "santo-nino",
+      "name": "Santo Niño",
+      "history": [
+        {
+          "year": 2020,
+          "population": 3892
+        }
+      ]
+    },
+    {
+      "id": "united-bayanihan",
+      "name": "United Bayanihan",
+      "history": [
+        {
+          "year": 2020,
+          "population": 5385
+        }
+      ]
+    },
+    {
+      "id": "united-better-living",
+      "name": "United Better Living",
+      "history": [
+        {
+          "year": 2020,
+          "population": 6204
+        }
       ]
     }
   ]

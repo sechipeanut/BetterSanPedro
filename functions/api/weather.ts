@@ -13,12 +13,11 @@ import type {
 /**
  * CORS Configuration
  * Restricts API access to trusted origins only (security fix for T-059)
- * Production: betterlb.pages.dev and custom domain
+ * Production: bettersanpedro.org
  * Development: localhost for local development
  */
 const ALLOWED_ORIGINS = [
-  'https://betterlb.pages.dev',
-  'https://betterlb.gov.ph', // Custom domain if configured
+  'https://bettersanpedro.org',
   'http://localhost:5173', // Vite dev server
   'http://localhost:8788', // Wrangler dev server
 ];
@@ -50,7 +49,7 @@ function getCorsHeaders(origin: string | null): Record<string, string> {
 // CONFIGURATION - Easy to change for other municipalities
 const DEFAULT_CITY: CityCoordinates = {
   name: 'San Pedro, PH',
-  lat: 14.35870,
+  lat: 14.3587,
   lon: 121.04644,
 };
 

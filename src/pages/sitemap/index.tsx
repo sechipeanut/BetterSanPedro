@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 
 import { SEO } from '@/components/layout/SEO';
+import { config } from '@/lib/lguConfig';
 
 interface SitemapSection {
   title: string;
@@ -81,7 +82,7 @@ const SitemapPage: FC = () => {
         },
         {
           title: 'Hotlines',
-          url: 'https://hotlines.bettergov.ph/?city=los%20baños&province=laguna',
+          url: `https://hotlines.bettergov.ph/?city=${encodeURIComponent(config.lgu.name.toLowerCase())}&province=${encodeURIComponent(config.lgu.province.toLowerCase())}`,
           description: 'Emergency and important contact numbers',
         },
       ],

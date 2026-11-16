@@ -9,6 +9,7 @@ import SearchInput from '@/components/ui/SearchInput';
 import useOpenLGU from '@/hooks/useOpenLGU';
 
 import OpenLGUSidebar from './components/OpenLGUSidebar';
+import { config } from '@/lib/lguConfig';
 
 const filterValues = [
   'all',
@@ -61,7 +62,7 @@ export default function OpenLGULayout() {
           <PageHeader
             variant='hero'
             title='OpenLGU Portal'
-            description='Browse official local ordinances, resolutions, and executive orders of Los Baños.'
+            description={`Browse official local ordinances, resolutions, and executive orders of ${config.lgu.name}.`}
             actions={
               <SearchInput
                 placeholder='Search by title, number, or author...'

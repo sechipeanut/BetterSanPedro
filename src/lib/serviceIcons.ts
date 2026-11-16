@@ -5,6 +5,7 @@ import {
   GraduationCap,
   Hammer,
   HeartHandshake,
+  Landmark,
   Leaf,
   ShieldCheck,
   Sprout,
@@ -25,6 +26,7 @@ export const categoryIconsBySlug: Record<string, LucideIcon> = {
   'environment-natural-resources': Leaf,
   'education-scholarship': GraduationCap,
   'public-safety-security': ShieldCheck,
+  'executive-legislative-services': Landmark,
 };
 
 // Icon mapping by category name (used in Hero and ServicesSection)
@@ -39,6 +41,7 @@ export const categoryIconsByName: Record<string, LucideIcon> = {
   'Environment & Natural Resources': Leaf,
   'Education & Scholarship': GraduationCap,
   'Public Safety & Security': ShieldCheck,
+  'Executive & Legislative Services': Landmark,
 };
 
 // Helper function to get icon by category name

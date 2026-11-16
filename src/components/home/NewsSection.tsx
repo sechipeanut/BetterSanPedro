@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { ArrowRightIcon, Calendar } from 'lucide-react';
+import { ArrowRightIcon, Calendar, ExternalLink } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 import { Badge } from '@/components/ui/Badge';
@@ -12,20 +12,16 @@ import { formatDate, truncateText } from '../../lib/utils';
 const NewsSection: FC = () => {
   const { t } = useTranslation('common');
 
+  // Nothing to show until announcements are added to src/data/news.ts
+  if (news.length === 0) return null;
+
   return (
     <section className='bg-kapwa-bg-surface py-12'>
       <div className='container mx-auto px-4'>
-        <div className='mb-8 flex items-center justify-between'>
+        <div className='mb-8'>
           <h2 className='text-kapwa-text-strong kapwa-heading-lg font-bold'>
             {t('news.title')}
           </h2>
-          <a
-            href='/news'
-            className='text-kapwa-text-brand hover:text-kapwa-text-brand flex items-center font-medium transition-colors'
-          >
-            View All
-            <ArrowRightIcon className='ml-1 h-4 w-4' />
-          </a>
         </div>
 
         {/* Using documented CardGrid pattern */}
@@ -33,7 +29,9 @@ const NewsSection: FC = () => {
           {news.slice(0, 6).map(item => (
             <a
               key={item.id}
-              href={`/news/${item.id}`}
+              href={item.url}
+              target='_blank'
+              rel='noopener noreferrer'
               className='group flex h-full flex-col'
             >
               <Card hover className='flex h-full flex-col'>
@@ -43,21 +41,27 @@ const NewsSection: FC = () => {
                       {item.category.charAt(0).toUpperCase() +
                         item.category.slice(1)}
                     </Badge>
-                    <div className='flex items-center gap-1 text-kapwa-text-support text-xs'>
+                    <div className='text-kapwa-text-support flex items-center gap-1 text-xs'>
                       <Calendar className='h-3 w-3' />
                       {formatDate(new Date(item.date))}
                     </div>
                   </div>
-                  <h3 className='text-kapwa-text-strong mb-2 text-lg font-semibold group-hover:text-kapwa-text-brand transition-colors'>
-                    {item.title}
+                  <h3 className='text-kapwa-text-strong group-hover:text-kapwa-text-brand mb-2 text-lg font-semibold transition-colors'>
+                    {truncateText(item.title, 110)}
                   </h3>
                   <p className='text-kapwa-text-support mb-4 flex-1 text-sm'>
-                    {truncateText(item.excerpt, 100)}
+                    {truncateText(item.excerpt, 160)}
                   </p>
-                  <span className='text-kapwa-text-link group-hover:text-kapwa-text-link-hover mt-auto flex items-center text-sm font-medium transition-colors'>
-                    Read More
-                    <ArrowRightIcon className='ml-1 h-4 w-4 transition-transform group-hover:translate-x-1' />
-                  </span>
+                  <div className='mt-auto flex items-center justify-between gap-2'>
+                    <span className='text-kapwa-text-support flex items-center gap-1 text-xs'>
+                      <ExternalLink className='h-3 w-3' />
+                      {item.source}
+                    </span>
+                    <span className='text-kapwa-text-link group-hover:text-kapwa-text-link-hover flex items-center text-sm font-medium transition-colors'>
+                      Read More
+                      <ArrowRightIcon className='ml-1 h-4 w-4 transition-transform group-hover:translate-x-1' />
+                    </span>
+                  </div>
                 </CardContent>
               </Card>
             </a>

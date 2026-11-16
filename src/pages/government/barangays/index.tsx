@@ -11,6 +11,7 @@ import SearchInput from '@/components/ui/SearchInput';
 import { toTitleCase } from '@/lib/stringUtils';
 
 import barangaysData from '@/data/directory/barangays.json';
+import { config } from '@/lib/lguConfig';
 
 export default function BarangaysIndex() {
   const [search, setSearch] = useState('');
@@ -23,7 +24,7 @@ export default function BarangaysIndex() {
     <>
       <PageHero
         title='Local Barangays'
-        description={`${filtered.length} component barangays of the Municipality of Los Baños.`}
+        description={`${filtered.length} component barangays of the ${config.lgu.fullName}.`}
       >
         <SearchInput
           value={search}

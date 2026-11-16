@@ -31,6 +31,10 @@ interface AggregateStats {
   total: number;
 }
 
+interface OrganizationStats extends AggregateStats {
+  organization_name: string;
+}
+
 export default function ProcurementPage() {
   // --- State (Aligned with EnhancedSearchInterface) ---
   const [query, setQuery] = useState('');
@@ -56,7 +60,14 @@ export default function ProcurementPage() {
 
   // Constants
   const ORG_NAME = config.transparency.procurement.organizationName;
-  const ORG_FILTER = `organization_name = "${ORG_NAME}"`;
+  // The LGU may appear in PhilGEPS under earlier names (e.g. before cityhood)
+  const ORG_NAMES = [
+    ORG_NAME,
+    ...(config.transparency.procurement.previousOrganizationNames ?? []),
+  ];
+  const ORG_FILTER = ORG_NAMES.map(
+    name => `organization_name = "${name}"`
+  ).join(' OR ');
   const orgDashboardUrl = `${config.transparency.procurement.externalDashboard}${encodeURIComponent(ORG_NAME)}`;
 
   // Helper function to get badge variant based on award status
@@ -133,7 +144,9 @@ export default function ProcurementPage() {
         // 2. Fetch Precomputed Stats (Fast Total)
         const statsPromise =
           !precomputedStats && !query
-            ? orgIndex.search(ORG_NAME, { limit: 1 })
+            ? Promise.all(
+                ORG_NAMES.map(name => orgIndex.search(name, { limit: 5 }))
+              )
             : Promise.resolve(null);
 
         // 3. Fetch Data for Visualizations
@@ -152,8 +165,19 @@ export default function ProcurementPage() {
 
         setResults(searchRes.hits as unknown as PhilgepsDoc[]);
 
-        if (statsRes && statsRes.hits.length > 0) {
-          setPrecomputedStats(statsRes.hits[0] as unknown as AggregateStats);
+        if (statsRes) {
+          // Sum the precomputed totals of each exact organization name
+          const matches = statsRes.flatMap((res, i) =>
+            (res.hits as unknown as OrganizationStats[]).filter(
+              hit => hit.organization_name === ORG_NAMES[i]
+            )
+          );
+          if (matches.length > 0) {
+            setPrecomputedStats({
+              count: matches.reduce((sum, m) => sum + m.count, 0),
+              total: matches.reduce((sum, m) => sum + m.total, 0),
+            });
+          }
         }
 
         setChartDataResults(
@@ -242,7 +266,7 @@ export default function ProcurementPage() {
     <div className='animate-in fade-in mx-auto max-w-full space-y-8 px-4 pb-20 duration-500 md:px-8'>
       <ModuleHeader
         title='Procurement Transparency'
-        description='Real-time database of bids and awards from the Municipality of Los Baños.'
+        description={`Real-time database of bids and awards from the ${config.lgu.fullName}.`}
       >
         <div className='flex w-full flex-col items-center gap-4 md:w-auto md:flex-row'>
           <SearchInput
@@ -424,7 +448,7 @@ export default function ProcurementPage() {
               </h4>
               <p className='text-kapwa-text-disabled text-xs leading-relaxed'>
                 View detailed spending charts, top supplier breakdowns, and
-                historical procurement trends for Los Baños.
+                historical procurement trends for {config.lgu.name}.
               </p>
             </div>
           </div>
@@ -434,7 +458,7 @@ export default function ProcurementPage() {
             rel='noreferrer'
             className='text-kapwa-text-inverse bg-kapwa-brand-600 hover:bg-kapwa-brand-700 inline-flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-xs font-bold transition-colors'
           >
-            View Los Baños Charts <ExternalLink className='h-3 w-3' />
+            View {config.lgu.name} Charts <ExternalLink className='h-3 w-3' />
           </a>
         </div>
 

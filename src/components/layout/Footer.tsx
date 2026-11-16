@@ -117,7 +117,7 @@ export const Footer: FC = () => {
             </p>
             <span className='hidden w-1 h-1 rounded-full bg-kapwa-border-strong md:block' />
             <p className='text-xs font-bold md:text-sm'>
-              Cost to the People of Los Baños ={' '}
+              Cost to the People of {config.lgu.name} ={' '}
               <span className='text-kapwa-text-success'>₱0</span>
             </p>
           </div>

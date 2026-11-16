@@ -49,6 +49,11 @@
       "name": "Environment & Natural Resources",
       "slug": "environment-natural-resources",
       "description": "Environmental permits, waste management, and conservation programs."
+    },
+    {
+      "name": "Executive & Legislative Services",
+      "slug": "executive-legislative-services",
+      "description": "Requests, endorsements, clearances, and assistance from the Mayor, Vice Mayor, City Council, and other City Hall offices."
     }
   ]
 }

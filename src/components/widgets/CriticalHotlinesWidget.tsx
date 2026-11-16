@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { AlertCircleIcon, ChevronRightIcon, PhoneIcon } from 'lucide-react';
 
 import hotlinesData from '../../data/philippines_hotlines.json';
+import { config } from '../../lib/lguConfig';
 
 interface Hotline {
   name: string;
@@ -35,7 +36,7 @@ const CriticalHotlinesWidget: FC<CriticalHotlinesWidgetProps> = ({
           </h3>
         </div>
         <Link
-          to='https://hotlines.bettergov.ph/?city=los%20baños&province=laguna'
+          to={`https://hotlines.bettergov.ph/?city=${encodeURIComponent(config.lgu.name.toLowerCase())}&province=${encodeURIComponent(config.lgu.province.toLowerCase())}`}
           className='flex items-center text-sm text-kapwa-text-inverse hover:underline'
         >
           View all <ChevronRightIcon className='ml-1 w-4 h-4' />

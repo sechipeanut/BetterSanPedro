@@ -15,6 +15,8 @@ import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/Badge';
 import SearchInput from '@/components/ui/SearchInput';
 
+import { isPathEnabled } from '@/lib/features';
+
 import servicesData from '@/data/services/services.json';
 import mergedServicesData from '@/data/citizens-charter/merged-services.json';
 
@@ -78,7 +80,7 @@ const Hero: FC = () => {
   }, []);
 
   // Quick access cards for key sections
-  const quickAccessCards: QuickAccessCard[] = [
+  const allQuickAccessCards: QuickAccessCard[] = [
     {
       title: 'Financial Reports',
       description: 'Budget & income statements',
@@ -104,6 +106,9 @@ const Hero: FC = () => {
       icon: <BarChart3Icon className='w-6 h-6' />,
     },
   ];
+  const quickAccessCards = allQuickAccessCards.filter(card =>
+    isPathEnabled(card.to)
+  );
 
   return (
     <div className='py-12 from-kapwa-brand-600 to-kapwa-brand-700 bg-linear-to-r text-kapwa-text-inverse md:py-24'>

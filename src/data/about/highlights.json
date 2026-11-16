@@ -1,26 +1,26 @@
 [
   {
-    "title": "The \"Mainit\" Legacy",
-    "description": "Before the Spaniards arrived, the settlement was known as 'Mainit' (Hot). Its thermal waters, heated by the dormant Mt. Makiling, were believed to cure ailments long before the first hospital was built.",
+    "title": "San Pedro de Tunasan",
+    "description": "The city's old name joins its patron, Saint Peter, with Tunasan, 'the place of tunas', a medicinal water plant once abundant on the shore of Laguna de Bay.",
     "theme": "slate",
     "icon": "Waves"
   },
   {
-    "title": "Rizal's Mountain",
-    "description": "Dr. Jose Rizal frequently scoured the jungles of Mt. Makiling. Spanish authorities once suspected him of using the peak to hoist a German flag or spy for Germany.",
-    "theme": "orange",
-    "icon": "Feather"
-  },
-  {
-    "title": "Friar Lands",
-    "description": "Vast tracts of land were once owned by Dominican Friars. Don Francisco Mercado, father of Jose Rizal, leased these lands for sugarcane and rice, tying the national hero's family deep into the soil of Los Baños.",
-    "theme": "amber",
+    "title": "Sampaguita Capital",
+    "description": "In the postwar years San Pedro became the country's leading producer of sampaguita buds. The city celebrates this heritage each year with the Sampaguita Festival.",
+    "theme": "emerald",
     "icon": "Leaf"
   },
   {
-    "title": "Nature & Delicacies",
-    "description": "Today, the 'Special Science and Nature City' is synonymous with two things: the legendary Buko Pie and its numerous hot spring resorts, remaining a favorite sanctuary for travelers.",
-    "theme": "emerald",
-    "icon": "Mountain"
+    "title": "Where Tenancy Law Was Signed",
+    "description": "President Magsaysay signed the Agricultural Tenancy Act (Republic Act No. 1199) at the San Pedro town plaza in 1954, the day the hacienda was sold to the government.",
+    "theme": "amber",
+    "icon": "Scroll"
+  },
+  {
+    "title": "Gateway of Laguna",
+    "description": "San Pedro is the first city of Laguna south of Metro Manila. It has 27 barangays and 348,968 residents as of the 2024 census.",
+    "theme": "orange",
+    "icon": "MapPin"
   }
 ]

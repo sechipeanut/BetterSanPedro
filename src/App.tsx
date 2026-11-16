@@ -15,6 +15,8 @@ import { SEO } from '@/components/layout/SEO';
 import { ScrollToTop } from '@/components/layout/ScrollToTop';
 import Ticker from '@/components/ui/Ticker';
 
+import { isFeatureEnabled } from '@/lib/features';
+
 import ContactUs from '@/pages/ContactUs';
 import Discord from '@/pages/Discord';
 // --- Pages ---
@@ -88,7 +90,10 @@ function App() {
 
 function AppContent() {
   const location = useLocation();
-  const isAdminRoute = location.pathname.startsWith('/admin');
+  // Feature flags come from config/lgu.config.json. A disabled feature gets no
+  // routes, so its URLs fall through to the 404 page.
+  const openLGU = isFeatureEnabled('openLGU');
+  const isAdminRoute = openLGU && location.pathname.startsWith('/admin');
 
   return (
     <div className='flex flex-col min-h-screen'>
@@ -150,52 +155,63 @@ function AppContent() {
         </Route>
 
         {/* Statistics Dashboard */}
-        <Route path='statistics' element={<StatisticsLayout />}>
-          <Route index element={<PopulationPage />} />
-          <Route path='population' element={<PopulationPage />} />
-          <Route path='municipal-income' element={<MunicipalIncomePage />} />
-          <Route path='competitiveness' element={<CompetitivenessPage />} />
-        </Route>
+        {isFeatureEnabled('statistics') && (
+          <Route path='statistics' element={<StatisticsLayout />}>
+            <Route index element={<PopulationPage />} />
+            <Route path='population' element={<PopulationPage />} />
+            <Route path='municipal-income' element={<MunicipalIncomePage />} />
+            <Route path='competitiveness' element={<CompetitivenessPage />} />
+          </Route>
+        )}
 
         {/* OpenLGU Portal */}
-        <Route path='openlgu' element={<OpenLGULayout />}>
-          <Route index element={<LegislationIndex />} />
-          <Route path='officials' element={<OfficialsIndex />} />
-          <Route path='terms' element={<TermsIndex />} />
-          {/* Legacy redirect for backward compatibility */}
-          <Route path=':type/:document' element={<LegacyDocumentRedirect />} />
-          {/* New unified document route */}
-          <Route path='documents/:document' element={<LegislationDetail />} />
-          <Route path='session/:sessionId' element={<SessionDetail />} />
-          <Route path='person/:personId' element={<PersonDetail />} />
-          <Route path='term/:termId' element={<TermDetail />} />
-        </Route>
+        {openLGU && (
+          <Route path='openlgu' element={<OpenLGULayout />}>
+            <Route index element={<LegislationIndex />} />
+            <Route path='officials' element={<OfficialsIndex />} />
+            <Route path='terms' element={<TermsIndex />} />
+            {/* Legacy redirect for backward compatibility */}
+            <Route
+              path=':type/:document'
+              element={<LegacyDocumentRedirect />}
+            />
+            {/* New unified document route */}
+            <Route path='documents/:document' element={<LegislationDetail />} />
+            <Route path='session/:sessionId' element={<SessionDetail />} />
+            <Route path='person/:personId' element={<PersonDetail />} />
+            <Route path='term/:termId' element={<TermDetail />} />
+          </Route>
+        )}
 
         {/* Transparency Portal */}
-        <Route path='/transparency' element={<TransparencyLayout />}>
-          <Route index element={<TransparencyIndex />} />
-          <Route path='financial' element={<FinancialPage />} />
-          <Route path='procurement' element={<ProcurementPage />} />
-          <Route path='/transparency/infrastructure'>
-            <Route index element={<InfrastructurePage />} />
-            <Route path=':contractId' element={<InfrastructureDetail />} />
+        {isFeatureEnabled('transparency') && (
+          <Route path='/transparency' element={<TransparencyLayout />}>
+            <Route index element={<TransparencyIndex />} />
+            <Route path='financial' element={<FinancialPage />} />
+            <Route path='procurement' element={<ProcurementPage />} />
+            <Route path='/transparency/infrastructure'>
+              <Route index element={<InfrastructurePage />} />
+              <Route path=':contractId' element={<InfrastructureDetail />} />
+            </Route>
           </Route>
-        </Route>
+        )}
 
         {/* Community Contribution Flow */}
         {/* <Route path='contribute' element={<ContributePage />} /> */}
 
         {/* Admin Routes */}
-        <Route path='/admin' element={<AdminLayout />}>
-          <Route index element={<AdminDashboard />} />
-          <Route path='documents' element={<AdminDocuments />} />
-          <Route path='persons/merge' element={<PersonMergeTool />} />
-          <Route path='persons/deletion-queue' element={<DeletionQueue />} />
-          <Route path='errors' element={<AdminErrorLog />} />
-          <Route path='audit-logs' element={<AdminAuditLog />} />
-          <Route path='review-queue' element={<AdminReviewQueue />} />
-          <Route path='reconcile' element={<AdminReconcile />} />
-        </Route>
+        {openLGU && (
+          <Route path='/admin' element={<AdminLayout />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path='documents' element={<AdminDocuments />} />
+            <Route path='persons/merge' element={<PersonMergeTool />} />
+            <Route path='persons/deletion-queue' element={<DeletionQueue />} />
+            <Route path='errors' element={<AdminErrorLog />} />
+            <Route path='audit-logs' element={<AdminAuditLog />} />
+            <Route path='review-queue' element={<AdminReviewQueue />} />
+            <Route path='reconcile' element={<AdminReconcile />} />
+          </Route>
+        )}
 
         {/* Catch-all 404 */}
         <Route path='*' element={<NotFound />} />

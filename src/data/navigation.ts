@@ -1,3 +1,4 @@
+import { isPathEnabled } from '../lib/features';
 import { config } from '../lib/lguConfig';
 import { NavigationItem } from '../types';
 import serviceCategories from './service_categories.json';
@@ -7,7 +8,7 @@ interface Category {
   slug: string;
 }
 
-export const mainNavigation: NavigationItem[] = [
+const allMainNavigation: NavigationItem[] = [
   {
     label: 'Services',
     href: '/services',
@@ -60,6 +61,11 @@ export const mainNavigation: NavigationItem[] = [
   },
 ];
 
+// Sections whose feature flag is off in config/lgu.config.json are hidden.
+export const mainNavigation: NavigationItem[] = allMainNavigation.filter(item =>
+  isPathEnabled(item.href)
+);
+
 export const footerNavigation = {
   // Brand Section (Matches the Solano/Bacolod mission-style text)
   brand: {
@@ -99,7 +105,7 @@ export const footerNavigation = {
         { label: 'Barangay Directory', href: '/government/barangays' },
         { label: 'OpenLGU Portal', href: '/openlgu' },
         { label: 'Transparency', href: '/transparency/financial' },
-      ],
+      ].filter(link => isPathEnabled(link.href)),
     },
     {
       title: 'BetterGov Network',

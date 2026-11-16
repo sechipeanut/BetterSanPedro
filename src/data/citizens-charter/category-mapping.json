@@ -1,88 +1,302 @@
 {
+  "_comment": "Maps Citizen's Charter 'Office or Division' values to a service category and a department slug (src/data/directory/departments.json). 'patterns' are case-insensitive regular expressions tried in order; the first mapping that matches wins. 'exclude' drops back-office services that residents do not transact.",
   "mappings": [
     {
-      "officeDivision": "BUSINESS PERMIT AND LICENSING OFFICE (BPLO)",
-      "categorySlug": "business-trade-investment",
-      "subcategory": "Business Permits"
-    },
-    {
-      "officeDivision": "MUNICIPAL TREASURER'S OFFICE",
-      "categorySlug": "taxation-payments",
-      "subcategory": "Tax Payment"
-    },
-    {
-      "officeDivision": "MUNICIPAL ASSESSOR'S OFFICE",
-      "categorySlug": "taxation-payments",
-      "subcategory": "Property Assessment"
-    },
-    {
-      "officeDivision": "MUNICIPAL ENGINEERING OFFICE",
-      "categorySlug": "infrastructure-public-works",
-      "subcategory": "Building Permits"
-    },
-    {
-      "officeDivision": "MUNICIPAL PLANNING AND DEVELOPMENT COORDINATOR (MPDC)",
-      "categorySlug": "infrastructure-public-works",
-      "subcategory": "Planning Services"
-    },
-    {
-      "officeDivision": "LOCAL CIVIL REGISTRY OFFICE",
-      "categorySlug": "certificates-vital-records",
-      "subcategory": "Civil Registry"
-    },
-    {
-      "officeDivision": "MUNICIPAL ECONOMIC ENTERPRISE - MARKET",
-      "categorySlug": "business-trade-investment",
-      "subcategory": "Market Services"
-    },
-    {
-      "officeDivision": "MUNICIPAL ECONOMIC ENTERPRISE - SLAUGHTERHOUSE",
-      "categorySlug": "agriculture-economic-development",
-      "subcategory": "Slaughterhouse Services"
-    },
-    {
-      "officeDivision": "MUNICIPAL AGRICULTURE OFFICE",
-      "categorySlug": "agriculture-economic-development",
-      "subcategory": "Agriculture Services"
-    },
-    {
-      "officeDivision": "BARANGAY OFFICE",
-      "categorySlug": "certificates-vital-records",
-      "subcategory": "Barangay Services"
-    },
-    {
-      "officeDivision": "BIDS AND AWARDS COMMITTEE",
-      "categorySlug": "public-safety-security",
-      "subcategory": "Bids and Awards"
-    },
-    {
-      "officeDivision": "INFORMATION AND COMMUNICATION SYSTEMS OFFICE (ICSO)",
-      "categorySlug": "infrastructure-public-works",
-      "subcategory": "ICT Services"
-    },
-    {
-      "officeDivision": "LOCAL YOUTH AND DEVELOPMENT OFFICE",
-      "categorySlug": "education-scholarship",
-      "subcategory": "Youth Services"
-    },
-    {
-      "officeDivision": "MUNICIPAL ACCOUNTING OFFICE",
-      "categorySlug": "business-trade-investment",
-      "subcategory": "Accounting Services"
-    },
-    {
-      "officeDivision": "MUNICIPAL HEALTH OFFICE (MHO)",
+      "officeDivision": "San Pedro Jose L. Amante Emergency Hospital",
+      "patterns": [
+        "Amante",
+        "^Medical Record Section$",
+        "^Admitting Section$",
+        "^OB\\b",
+        "^Business Office$",
+        "^Administrative Office$",
+        "^Philhealth",
+        "^Out ?patient Department",
+        "^Urgent Care",
+        "^Delivery Room$",
+        "Laboratory Unit$",
+        "^Radiology",
+        "^Specialty Clinic$",
+        "^Emergency Room$",
+        "^Hemodialysis",
+        "^Operating Room",
+        "^Medical Social Service$",
+        "^Ambulance",
+        "^Pharmacy",
+        "Physical Medicine"
+      ],
       "categorySlug": "health-wellness",
-      "subcategory": "Health Services"
+      "subcategory": "City Hospital",
+      "officeSlug": "san-pedro-jose-l-amante-emergency-hospital"
     },
     {
-      "officeDivision": "PUBLIC ORDER AND SAFETY OFFICE/TRANSPORTATION AND REGULATION UNIT",
+      "officeDivision": "San Pedro City Polytechnic College",
+      "patterns": [
+        "Polytechnic College",
+        "^Registrar.s Office$",
+        "^Cashier.s Office$"
+      ],
+      "categorySlug": "education-scholarship",
+      "subcategory": "City College",
+      "officeSlug": "san-pedro-city-polytechnic-college"
+    },
+    {
+      "officeDivision": "Office of the Senior Citizens Affairs",
+      "patterns": ["Senior Citizens? Affairs"],
+      "categorySlug": "social-services-assistance",
+      "subcategory": "Senior Citizens",
+      "officeSlug": "office-senior-citizens-affairs"
+    },
+    {
+      "officeDivision": "Persons with Disability Affairs Office",
+      "patterns": ["PWD", "Disabilit"],
+      "categorySlug": "social-services-assistance",
+      "subcategory": "Persons with Disability",
+      "officeSlug": "persons-with-disability-affairs-office"
+    },
+    {
+      "officeDivision": "City Social Welfare and Development Office",
+      "patterns": ["Social Welfare", "CSWDO"],
+      "categorySlug": "social-services-assistance",
+      "subcategory": "Social Welfare",
+      "officeSlug": "municipal-social-welfare-development-office"
+    },
+    {
+      "officeDivision": "City Agriculture Office",
+      "patterns": ["Agricultur"],
+      "categorySlug": "agriculture-economic-development",
+      "subcategory": "Agriculture",
+      "officeSlug": "municipal-agriculture-office"
+    },
+    {
+      "officeDivision": "City Veterinary Office",
+      "patterns": ["Veterinary"],
+      "categorySlug": "agriculture-economic-development",
+      "subcategory": "Veterinary Services",
+      "officeSlug": "city-veterinary-office"
+    },
+    {
+      "officeDivision": "City Cooperative and Livelihood Development Office",
+      "patterns": ["Cooperative"],
+      "categorySlug": "agriculture-economic-development",
+      "subcategory": "Cooperatives and Livelihood",
+      "officeSlug": "city-cooperative-and-livelihood-development-office"
+    },
+    {
+      "officeDivision": "Public Employment and Services Office",
+      "patterns": ["Public Employment"],
+      "categorySlug": "agriculture-economic-development",
+      "subcategory": "Employment",
+      "officeSlug": "public-employment-service-office"
+    },
+    {
+      "officeDivision": "Public Order and Safety Office",
+      "patterns": [
+        "Public Order",
+        "POSO",
+        "Civil Security",
+        "Traffic Management"
+      ],
       "categorySlug": "public-safety-security",
-      "subcategory": "Public Safety"
+      "subcategory": "Public Order and Safety",
+      "officeSlug": "public-order-and-safety-office"
+    },
+    {
+      "officeDivision": "City Disaster Risk Reduction and Management Office",
+      "patterns": ["Disaster Risk"],
+      "categorySlug": "public-safety-security",
+      "subcategory": "Disaster Risk Reduction",
+      "officeSlug": "municipal-mdrrmo-office"
+    },
+    {
+      "officeDivision": "Business Permits and Licensing Office",
+      "patterns": ["Business Permit"],
+      "categorySlug": "business-trade-investment",
+      "subcategory": "Business Permits",
+      "officeSlug": "business-permit-and-licensing-office"
+    },
+    {
+      "officeDivision": "San Pedro Town Center",
+      "patterns": ["Town Center"],
+      "categorySlug": "business-trade-investment",
+      "subcategory": "Market Stalls",
+      "officeSlug": "san-pedro-town-center"
+    },
+    {
+      "officeDivision": "City Treasurer's Office",
+      "patterns": ["Treasurer"],
+      "categorySlug": "taxation-payments",
+      "subcategory": "Tax Payment",
+      "officeSlug": "municipal-treasurers-office"
+    },
+    {
+      "officeDivision": "City Assessor's Office",
+      "patterns": ["Assessor"],
+      "categorySlug": "taxation-payments",
+      "subcategory": "Property Assessment",
+      "officeSlug": "municipal-assessors-office"
+    },
+    {
+      "officeDivision": "City Civil Registrar's Office",
+      "patterns": ["Civil Registrar"],
+      "categorySlug": "certificates-vital-records",
+      "subcategory": "Civil Registry",
+      "officeSlug": "local-civil-registry-office"
+    },
+    {
+      "officeDivision": "Office of the Economic Enterprise - Cemetery Division",
+      "patterns": ["Cemetery"],
+      "categorySlug": "certificates-vital-records",
+      "subcategory": "Cemetery Services",
+      "officeSlug": "economic-enterprise-cemetery-division"
+    },
+    {
+      "officeDivision": "City Health Office - Nutrition Unit",
+      "patterns": ["Nutrition"],
+      "categorySlug": "health-wellness",
+      "subcategory": "Nutrition",
+      "officeSlug": "municipal-nutrition-office"
+    },
+    {
+      "officeDivision": "City Health Office",
+      "patterns": ["City Health Office"],
+      "categorySlug": "health-wellness",
+      "subcategory": "Public Health",
+      "officeSlug": "municipal-health-office"
+    },
+    {
+      "officeDivision": "Office of the Building Official",
+      "patterns": ["Building Official"],
+      "categorySlug": "infrastructure-public-works",
+      "subcategory": "Building Permits",
+      "officeSlug": "office-of-the-building-official"
+    },
+    {
+      "officeDivision": "City Planning and Development Coordinator's Office",
+      "patterns": ["Planning and Development", "Zoning"],
+      "categorySlug": "infrastructure-public-works",
+      "subcategory": "Zoning and Planning",
+      "officeSlug": "municipal-planning-and-development-office"
+    },
+    {
+      "officeDivision": "City Engineering Office",
+      "patterns": ["Engineering"],
+      "categorySlug": "infrastructure-public-works",
+      "subcategory": "Engineering",
+      "officeSlug": "municipal-engineering-office"
+    },
+    {
+      "officeDivision": "City Urban Development and Housing Office",
+      "patterns": ["Urban Development"],
+      "categorySlug": "social-services-assistance",
+      "subcategory": "Housing",
+      "officeSlug": "municipal-urban-development-and-housing-office"
+    },
+    {
+      "officeDivision": "City Environment and Natural Resources Office",
+      "patterns": ["Environment and Natural"],
+      "categorySlug": "environment-natural-resources",
+      "subcategory": "Environment",
+      "officeSlug": "municipal-environment-and-natural-resources-office"
+    },
+    {
+      "officeDivision": "City Education and Development Office",
+      "patterns": ["Education and Development"],
+      "categorySlug": "education-scholarship",
+      "subcategory": "Scholarships",
+      "officeSlug": "city-education-and-development-office"
+    },
+    {
+      "officeDivision": "City Youth and Sports Development Office",
+      "patterns": ["Youth"],
+      "categorySlug": "education-scholarship",
+      "subcategory": "Youth and Sports",
+      "officeSlug": "local-youth-and-development-office"
+    },
+    {
+      "officeDivision": "City Tourism, Culture and Arts Office",
+      "patterns": ["Tourism"],
+      "categorySlug": "executive-legislative-services",
+      "subcategory": "Tourism, Culture and Arts",
+      "officeSlug": "municipal-tourism-office"
+    },
+    {
+      "officeDivision": "Public Affairs and Information Office",
+      "patterns": ["Public Affairs"],
+      "categorySlug": "executive-legislative-services",
+      "subcategory": "Public Information",
+      "officeSlug": "public-information-office"
+    },
+    {
+      "officeDivision": "Office of the City Vice Mayor",
+      "patterns": ["Vice.?Mayor"],
+      "categorySlug": "executive-legislative-services",
+      "subcategory": "Office of the Vice Mayor",
+      "officeSlug": "office-of-the-vice-mayor"
+    },
+    {
+      "officeDivision": "Sangguniang Panlungsod Secretariat",
+      "patterns": ["Sangguniang"],
+      "categorySlug": "executive-legislative-services",
+      "subcategory": "City Council",
+      "officeSlug": "sangguniang-panlungsod-secretariat"
+    },
+    {
+      "officeDivision": "Office of the City Mayor",
+      "patterns": ["Mayor"],
+      "categorySlug": "executive-legislative-services",
+      "subcategory": "Office of the Mayor",
+      "officeSlug": "office-of-the-mayor"
+    },
+    {
+      "officeDivision": "City Administrator's Office",
+      "patterns": ["Administrator"],
+      "categorySlug": "executive-legislative-services",
+      "subcategory": "City Administrator",
+      "officeSlug": "city-administrators-office"
+    },
+    {
+      "officeDivision": "City Legal Office",
+      "patterns": ["Legal"],
+      "categorySlug": "executive-legislative-services",
+      "subcategory": "Legal Services",
+      "officeSlug": "city-legal-office"
+    },
+    {
+      "officeDivision": "General Services Office",
+      "patterns": ["General Services"],
+      "categorySlug": "executive-legislative-services",
+      "subcategory": "General Services",
+      "officeSlug": "municipal-general-services-office",
+      "exclude": true
+    },
+    {
+      "officeDivision": "City Accounting Office",
+      "patterns": ["Accounting"],
+      "categorySlug": "taxation-payments",
+      "subcategory": "Accounting",
+      "officeSlug": "municipal-accounting-office",
+      "exclude": true
+    },
+    {
+      "officeDivision": "City Procurement Office",
+      "patterns": ["Procurement"],
+      "categorySlug": "business-trade-investment",
+      "subcategory": "Procurement",
+      "officeSlug": "bids-and-awards-committee",
+      "exclude": true
+    },
+    {
+      "officeDivision": "City Information and Communication Technology Office",
+      "patterns": ["Information and Communication"],
+      "categorySlug": "executive-legislative-services",
+      "subcategory": "ICT",
+      "officeSlug": "information-and-communication-systems-office",
+      "exclude": true
     }
   ],
   "defaultCategory": {
-    "name": "Infrastructure & Public Works",
-    "slug": "infrastructure-public-works"
+    "name": "Executive & Legislative Services",
+    "slug": "executive-legislative-services"
   }
 }

@@ -25,10 +25,12 @@ import { DetailSection, PageHero } from '@/components/layout/PageLayouts';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardContent } from '@/components/ui/Card';
 
+import { isFeatureEnabled } from '@/lib/features';
 import { toTitleCase } from '@/lib/stringUtils';
 
 import executiveData from '@/data/directory/executive.json';
 import legislativeData from '@/data/directory/legislative.json';
+import { config } from '@/lib/lguConfig';
 
 // --- Types ---
 interface ExecutiveOfficial {
@@ -114,7 +116,7 @@ function ElectedLeaderCard({ leader }: { leader: ExecutiveOfficial }) {
           </div>
         )}
 
-        {leader.personId && (
+        {hasProfiles && leader.personId && (
           <div className='border-kapwa-border-weak w-full border-t pt-4'>
             <span className='text-kapwa-text-brand text-sm font-bold'>
               View Full Profile →
@@ -125,7 +127,7 @@ function ElectedLeaderCard({ leader }: { leader: ExecutiveOfficial }) {
     </Card>
   );
 
-  return leader.personId ? (
+  return hasProfiles && leader.personId ? (
     <Link
       to={`/openlgu/person/${leader.personId}`}
       className='group block h-full'
@@ -225,7 +227,7 @@ function CouncilMemberCard({
     </Card>
   );
 
-  return member.personId ? (
+  return hasProfiles && member.personId ? (
     <Link to={`/openlgu/person/${member.personId}`} className='block group'>
       {card}
     </Link>
@@ -233,6 +235,9 @@ function CouncilMemberCard({
     card
   );
 }
+
+// Profile pages live in the OpenLGU portal; link to them only when it is on.
+const hasProfiles = isFeatureEnabled('openLGU');
 
 // --- Page ---
 
@@ -244,9 +249,8 @@ export default function ElectedOfficialsPage() {
     [allExecutive]
   );
 
-  const sbData = legislativeData.find(
-    item => item.slug === '12th-sangguniang-bayan'
-  );
+  // legislative.json holds the current council as its first entry
+  const sbData = legislativeData[0];
 
   const getChairedCommittees = (memberName: string): Committee[] =>
     (sbData?.permanent_committees ?? []).filter(
@@ -263,7 +267,7 @@ export default function ElectedOfficialsPage() {
     <div className='space-y-8'>
       <PageHero
         title='Elected Officials'
-        description='The elected leaders and legislative body of the Municipal Government.'
+        description={`The elected leaders and legislative body of the ${config.lgu.type === 'city' ? 'City' : 'Municipal'} Government.`}
         breadcrumb={[
           { label: 'Government', href: '/government' },
           { label: 'Elected Officials', href: '/government/elected-officials' },

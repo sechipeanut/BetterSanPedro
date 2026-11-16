@@ -3,7 +3,7 @@
     "name": "San Pedro",
     "fullName": "City of San Pedro",
     "province": "Laguna",
-    "districtEngineeringOffice": "Laguna 1st DEO",
+    "districtEngineeringOffice": "Laguna 2nd DEO",
     "region": "Region IV-A",
     "regionCode": "CALABARZON",
     "type": "city",
@@ -21,7 +21,7 @@
     "navbarTagline": "A Community-run portal for",
     "footerBrandName": "Better San Pedro",
     "footerTagline": "Community Civic Portal",
-    "logoWhitePath": "/logos/webp/bettersp-white-outline.webp"
+    "logoWhitePath": "/logos/webp/bettersp-transparent.webp"
   },
   "location": {
     "coordinates": {
@@ -35,13 +35,16 @@
   "transparency": {
     "procurement": {
       "organizationName": "CITY OF SAN PEDRO, LAGUNA",
+      "previousOrganizationNames": ["MUNICIPALITY OF SAN PEDRO, LAGUNA"],
       "externalDashboard": "https://transparency.bettergov.ph/organizations/"
     },
     "infrastructure": {
       "searchString": "San Pedro",
       "exactMatchTargets": [
-        "san pedro",
-        "san pedro city"
+        "san pedro city",
+        "city of san pedro",
+        "san pedro, laguna",
+        "san pedro laguna"
       ]
     }
   },
@@ -51,7 +54,7 @@
     "services": "src/data/services/categories"
   },
   "features": {
-    "openLGU": true,
+    "openLGU": false,
     "transparency": true,
     "tourism": true,
     "statistics": true

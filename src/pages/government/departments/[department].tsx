@@ -26,6 +26,7 @@ import { toTelUri } from '@/lib/utils';
 
 import departmentsData from '@/data/directory/departments.json';
 import mergedServicesData from '@/data/citizens-charter/merged-services.json';
+import { config } from '@/lib/lguConfig';
 
 export default function DepartmentDetail() {
   const { department: slug } = useParams();
@@ -112,7 +113,7 @@ export default function DepartmentDetail() {
         {/* Middle: Address */}
         {dept.address && (
           <p className='text-kapwa-text-support mb-4 text-sm'>
-            {dept.address}, Los Baños, Laguna
+            {dept.address}, {config.lgu.fullName}, {config.lgu.province}
           </p>
         )}
 
@@ -245,7 +246,7 @@ export default function DepartmentDetail() {
             <CardContent className='p-6'>
               <p className='text-kapwa-text-support text-sm leading-relaxed'>
                 The {toTitleCase(dept.office_name)} is a frontline office of the
-                Municipal Government of Los Baños. It is responsible for
+                Government of the {config.lgu.fullName}. It is responsible for
                 executing administrative mandates and technical functions to
                 ensure the delivery of high-quality public services within the
                 Science and Nature City.

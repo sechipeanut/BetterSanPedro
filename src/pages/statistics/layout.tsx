@@ -4,6 +4,7 @@ import { PageHeader, SectionBlock } from '@/components/layout';
 import { SidebarLayout } from '@/components/layout/SidebarLayout';
 
 import StatisticsSidebar from './components/StatisticsSidebar';
+import { config } from '@/lib/lguConfig';
 
 export default function StatisticsLayout() {
   return (
@@ -11,7 +12,7 @@ export default function StatisticsLayout() {
       <PageHeader
         variant='centered'
         title='Municipal Statistics'
-        description='Data-driven insights into the population, economy, and performance of Los Baños.'
+        description={`Data-driven insights into the population, economy, and performance of ${config.lgu.name}.`}
       />
 
       <SectionBlock>

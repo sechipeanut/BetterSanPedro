@@ -4,6 +4,7 @@ import { PageHeader } from '@/components/layout';
 import { SidebarLayout } from '@/components/layout/SidebarLayout';
 
 import TransparencySidebar from './components/TransparencySidebar';
+import { config } from '@/lib/lguConfig';
 
 export default function TransparencyLayout() {
   const location = useLocation();
@@ -20,7 +21,7 @@ export default function TransparencyLayout() {
           <PageHeader
             variant='centered'
             title='Transparency Portal'
-            description='A community-led initiative to make Los Baños public data accessible, readable, and verifiable for every citizen.'
+            description={`A community-led initiative to make ${config.lgu.name} public data accessible, readable, and verifiable for every citizen.`}
           />
         ) : (
           <PageHeader

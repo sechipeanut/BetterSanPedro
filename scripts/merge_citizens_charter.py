@@ -79,14 +79,29 @@ def generate_service_slug(service_number: str, service_name: str, existing_slugs
         counter += 1
 
 
+def find_office_mapping(office_division: str, mapping_data: dict) -> dict | None:
+    """Find the category-mapping.json entry for a charter office name.
+
+    An entry matches on its exact officeDivision or on any of its
+    case-insensitive regular-expression 'patterns'. First match wins.
+    """
+    for mapping in mapping_data.get("mappings", []):
+        if mapping["officeDivision"] == office_division:
+            return mapping
+        for pattern in mapping.get("patterns", []):
+            if re.search(pattern, office_division, re.IGNORECASE):
+                return mapping
+    return None
+
+
 def map_office_division_to_category(office_division: str, mapping_data: dict) -> dict:
     """Map office division to category
 
     Returns:
         {"name": str, "slug": str}
     """
-    for mapping in mapping_data.get("mappings", []):
-        if mapping["officeDivision"] == office_division:
+    for mapping in [find_office_mapping(office_division, mapping_data)]:
+        if mapping is not None:
             # Look up category name from slug
             category_slug = mapping["categorySlug"]
             # Map slugs to display names
@@ -101,6 +116,7 @@ def map_office_division_to_category(office_division: str, mapping_data: dict) ->
                 "health-wellness": "Health & Wellness",
                 "social-services-assistance": "Social Services & Assistance",
                 "environment-natural-resources": "Environment & Natural Resources",
+                "executive-legislative-services": "Executive & Legislative Services",
             }
             return {
                 "name": category_names.get(category_slug, mapping.get("subcategory", "Other Services")),
@@ -144,11 +160,16 @@ def is_incomplete_service(service: dict) -> bool:
     return False
 
 
-def map_office_division_to_slug(office_division: str) -> str:
+def map_office_division_to_slug(office_division: str, mapping_data: dict | None = None) -> str:
     """Map Citizens Charter office division name to officeSlug
 
-    Uses the naming convention from departments.json
+    Uses the 'officeSlug' of the matching category-mapping.json entry, falling
+    back to the legacy table below. Slugs follow departments.json.
     """
+    mapping = find_office_mapping(office_division, mapping_data or {})
+    if mapping and mapping.get("officeSlug"):
+        return mapping["officeSlug"]
+
     # Map CC office names to slugs used in departments.json
     office_mapping = {
         "BUSINESS PERMIT AND LICENSING OFFICE (BPLO)": "business-permit-and-licensing-office",
@@ -207,7 +228,7 @@ def convert_cc_service_to_service(cc_service: dict, category: dict, slug: str, m
         "source": "citizens-charter",
         "type": "transaction",  # Most CC services are transactional
         "officeDivision": cc_service["office_division"],
-        "officeSlug": map_office_division_to_slug(cc_service["office_division"]),
+        "officeSlug": map_office_division_to_slug(cc_service["office_division"], mapping_data),
         "category": category,
         "classification": cc_service.get("classification") if not is_incomplete else None,
         "typeOfTransaction": cc_service.get("type_of_transaction") if not is_incomplete else None,
@@ -247,6 +268,9 @@ def convert_cc_service_to_service(cc_service: dict, category: dict, slug: str, m
     if "person_responsible" in cc_service and cc_service["person_responsible"]:
         service["personResponsible"] = cc_service["person_responsible"]
 
+    if cc_service.get("description"):
+        service["description"] = cc_service["description"]
+
     return service
 
 
@@ -275,6 +299,11 @@ def main():
     verification_queue = []
 
     for cc_service in cc_data.get("services", []):
+        # Skip back-office services flagged 'exclude' in category-mapping.json
+        office_mapping = find_office_mapping(cc_service["office_division"], category_mapping)
+        if office_mapping and office_mapping.get("exclude"):
+            continue
+
         # Generate unique slug
         slug = generate_service_slug(
             cc_service["service_number"],
@@ -298,6 +327,7 @@ def main():
                 "health-wellness": "Health & Wellness",
                 "social-services-assistance": "Social Services & Assistance",
                 "environment-natural-resources": "Environment & Natural Resources",
+                "executive-legislative-services": "Executive & Legislative Services",
             }
             category = {
                 "name": category_names.get(category_slug, "Other Services"),

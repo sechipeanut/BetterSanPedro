@@ -13,6 +13,7 @@ import { getPersonName } from '@/lib/openlgu';
 
 import OfficialCard from './components/OfficialCard';
 import OfficialsFilterBar from './components/OfficialsFilterBar';
+import { config } from '@/lib/lguConfig';
 
 interface LegislationContext {
   persons: Person[];
@@ -114,8 +115,8 @@ export default function OfficialsIndex() {
 
   return (
     <IndexPageLayout
-      title='Officials of Los Baños'
-      description='Browse the historical collection of all LGU politicians who have served Los Baños.'
+      title={`Officials of ${config.lgu.name}`}
+      description={`Browse the historical collection of all LGU politicians who have served ${config.lgu.name}.`}
       breadcrumbs={breadcrumbs}
       search={{
         value: searchQuery,
