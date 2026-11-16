@@ -149,15 +149,15 @@ export function SEO({
   // Generate breadcrumb structured data
   const breadcrumbJsonLd = breadcrumbs
     ? {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: breadcrumbs.map((breadcrumb, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        name: breadcrumb.name,
-        item: `${baseUrl}${breadcrumb.url}`,
-      })),
-    }
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: breadcrumbs.map((breadcrumb, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: breadcrumb.name,
+          item: `${baseUrl}${breadcrumb.url}`,
+        })),
+      }
     : null;
 
   return (
