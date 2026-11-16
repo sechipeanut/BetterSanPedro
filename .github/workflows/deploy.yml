@@ -91,4 +91,6 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=bettersanpedro
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          wranglerVersion: '4.70.0'
+          # No wranglerVersion: the action then uses the Wrangler already
+          # installed from package.json. Pinning a different version makes the
+          # action run its own npm install, which fails on peer dependencies.
