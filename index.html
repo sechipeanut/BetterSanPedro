@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="" />
     <link
       rel="icon"
       type="image/png"
@@ -16,6 +15,19 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!--
+      Static defaults for crawlers and link previews that do not run
+      JavaScript. src/main.tsx removes the data-static-seo tags on startup so
+      the per-page tags from src/components/layout/SEO.tsx are the only ones.
+    -->
+    <title>BetterSanPedro | City of San Pedro, Laguna</title>
+    <meta
+      name="description"
+      content="Community-powered portal of the City of San Pedro, Laguna. Find government services, city officials, barangays, statistics and transparency data."
+      data-static-seo
+    />
+    <link rel="canonical" href="https://bettersanpedro.org/" data-static-seo />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,11 +35,32 @@
       rel="stylesheet"
     />
 
-    <meta property="og:image" content="/logos/png/bettersp-blue.png" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="768" />
-    <meta property="og:image:height" content="768" />
-    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="BetterSanPedro | City of San Pedro, Laguna"
+      data-static-seo
+    />
+    <meta
+      property="og:description"
+      content="Community-powered portal of the City of San Pedro, Laguna. Find government services, city officials, barangays, statistics and transparency data."
+      data-static-seo
+    />
+    <meta property="og:site_name" content="BetterSanPedro" data-static-seo />
+    <meta
+      property="og:url"
+      content="https://bettersanpedro.org/"
+      data-static-seo
+    />
+    <meta property="og:type" content="website" data-static-seo />
+    <meta
+      property="og:image"
+      content="https://bettersanpedro.org/logos/png/bettersp-blue.png"
+      data-static-seo
+    />
+    <meta property="og:image:type" content="image/png" data-static-seo />
+    <meta property="og:image:width" content="1024" data-static-seo />
+    <meta property="og:image:height" content="1024" data-static-seo />
+    <meta name="twitter:card" content="summary" data-static-seo />
   </head>
 
   <body>
